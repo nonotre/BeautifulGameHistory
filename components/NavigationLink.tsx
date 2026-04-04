@@ -1,5 +1,6 @@
 'use client'
 
+import { forwardRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { useNavigationStore } from '@/store/navigationStore'
 
@@ -12,34 +13,45 @@ interface NavigationLinkProps {
   className?: string
   id?: string
   style?: React.CSSProperties
+  /**
+   * Optional async callback executed *before* the route push.
+   * Useful for running animations (e.g. flash) before navigation.
+   * Navigation will wait until the returned Promise resolves.
+   */
+  onBeforeNavigate?: () => Promise<void>
 }
 
 /**
  * NavigationLink — wraps a <button> that:
- * 1. Pushes `from` onto the navigationStore history stack.
- * 2. Calls router.push(href).
+ * 1. Runs the optional `onBeforeNavigate` async callback (e.g. an animation).
+ * 2. Pushes `from` onto the navigationStore history stack.
+ * 3. Calls router.push(href).
+ *
+ * Forwards its ref so callers can access the underlying <button> DOM node
+ * (e.g. to imperatively add/remove animation classes).
  *
  * Use this instead of <Link> when navigation must be tracked in the store.
  */
-export function NavigationLink({
-  href,
-  from,
-  children,
-  className,
-  id,
-  style,
-}: NavigationLinkProps) {
-  const router = useRouter()
-  const pushRoute = useNavigationStore((s) => s.pushRoute)
+export const NavigationLink = forwardRef<HTMLButtonElement, NavigationLinkProps>(
+  function NavigationLink(
+    { href, from, children, className, id, style, onBeforeNavigate },
+    ref,
+  ) {
+    const router = useRouter()
+    const pushRoute = useNavigationStore((s) => s.pushRoute)
 
-  function handleClick() {
-    pushRoute(from)
-    router.push(href)
-  }
+    async function handleClick() {
+      if (onBeforeNavigate) {
+        await onBeforeNavigate()
+      }
+      pushRoute(from)
+      router.push(href)
+    }
 
-  return (
-    <button id={id} className={className} style={style} onClick={handleClick}>
-      {children}
-    </button>
-  )
-}
+    return (
+      <button ref={ref} id={id} className={className} style={style} onClick={handleClick}>
+        {children}
+      </button>
+    )
+  },
+)

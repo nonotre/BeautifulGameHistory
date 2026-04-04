@@ -135,7 +135,7 @@ export function IntroScreen() {
             <p
               style={{
                 color: 'var(--color-muted)',
-                fontSize: '0.8rem',
+                fontSize: 'var(--font-size-base)',
                 letterSpacing: '0.08em',
               }}
             >

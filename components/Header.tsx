@@ -2,6 +2,7 @@
 
 import { useRouter } from 'next/navigation'
 import { useNavigationStore } from '@/store/navigationStore'
+import { Button } from '@/components/ui/8bit/button'
 import { en } from '@/lib/i18n/en'
 
 interface HeaderProps {
@@ -16,6 +17,7 @@ interface HeaderProps {
  * - BACK: pops the navigationStore history stack and router.push to that route.
  * - NEXT: pushes current route then router.push to nextHref.
  *
+ * Both buttons use the 8bitcn Button component (pixel-art style).
  * Only serializable primitives (boolean, string) are accepted as props
  * from Server Component parents — no functions passed across the boundary.
  */
@@ -35,8 +37,6 @@ export function Header({ hasNext = false, nextHref }: HeaderProps) {
 
   function handleNext() {
     if (!nextHref) return
-    // Record where we came from before navigating forward.
-    // The current URL is pushed so BACK can return here.
     const currentPath = window.location.pathname
     pushRoute(currentPath)
     router.push(nextHref)
@@ -52,24 +52,24 @@ export function Header({ hasNext = false, nextHref }: HeaderProps) {
         borderBottom: '1px solid var(--color-border)',
       }}
     >
-      <button
+      <Button
         id="header-back-btn"
-        className="btn btn--ghost"
         onClick={handleBack}
         aria-label="Go back"
+        size="lg"
       >
         {en.nav.back}
-      </button>
+      </Button>
 
       {hasNext && nextHref && (
-        <button
+        <Button
           id="header-next-btn"
-          className="btn btn--ghost"
           onClick={handleNext}
           aria-label="Go to next page"
+          size="lg"
         >
           {en.nav.next}
-        </button>
+        </Button>
       )}
     </header>
   )

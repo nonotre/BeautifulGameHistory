@@ -1,6 +1,7 @@
 'use client'
 
 import { Header } from '@/components/Header'
+import { Paragraphs } from '@/components/Paragraphs'
 import { en } from '@/lib/i18n/en'
 
 /**
@@ -39,18 +40,7 @@ export function CreditsScreen() {
           </div>
 
           {/* Placeholder text */}
-          {en.credits.placeholderText.map((paragraph, i) => (
-            <p
-              key={i}
-              style={{
-                lineHeight: 1.8,
-                color: 'var(--color-text)',
-                fontSize: '0.9rem',
-              }}
-            >
-              {paragraph}
-            </p>
-          ))}
+          <Paragraphs items={en.credits.placeholderText} />
         </div>
       </div>
     </main>

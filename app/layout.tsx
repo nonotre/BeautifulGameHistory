@@ -1,17 +1,31 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Silkscreen, VT323, Geist } from 'next/font/google'
 import './globals.css'
+import { cn } from "@/lib/utils";
+
+const geist = Geist({subsets:['latin'],variable:'--font-sans'});
 
 /**
- * Phase 1 font: Inter via next/font/google.
- * Phase 2: swap for retro gaming font (Press_Start_2P or similar).
- * The `variable` option exposes the font as a CSS custom property
- * for use in Tailwind and globals.css.
+ * Phase 2 fonts (retro gaming theme):
+ * - Silkscreen  → navigations, buttons, headings  (--font-heading)
+ * - VT323       → paragraphs and body copy         (--font-body)
+ *
+ * Both are loaded via next/font/google (self-hosted, zero layout shift).
+ * The `variable` option exposes each font as a CSS custom property so
+ * globals.css can reference them without touching component code.
  */
-const inter = Inter({
+const silkscreen = Silkscreen({
   subsets: ['latin'],
+  weight: ['400', '700'],
   display: 'swap',
-  variable: '--font-sans',
+  variable: '--font-heading',
+})
+
+const vt323 = VT323({
+  subsets: ['latin'],
+  weight: '400',
+  display: 'swap',
+  variable: '--font-body',
 })
 
 export const metadata: Metadata = {
@@ -28,7 +42,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className={inter.variable}>
+    <html lang="en" className={cn(silkscreen.variable, vt323.variable, "font-sans", geist.variable, "dark")}>
       <body>{children}</body>
     </html>
   )
