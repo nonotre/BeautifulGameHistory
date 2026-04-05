@@ -62,7 +62,7 @@ export function GameScreen({ slug }: GameScreenProps) {
           aria-label="Game content"
           className="hide-scrollbar"
           style={{
-            flex: '0 0 65%',
+            flex: 1,
             overflowY: 'auto',
             overflowX: 'hidden',
             display: 'flex',
@@ -119,9 +119,9 @@ export function GameScreen({ slug }: GameScreenProps) {
 
           {/* Technical and Market Information (Only if exists) */}
           {(game as any).salesVolume && (
-            <div style={{ background: 'var(--color-surface)', padding: '1rem', borderRadius: '4px', border: '1px solid var(--color-border)' }}>
-              <h2 style={{ fontSize: '1rem', marginBottom: '0.5rem', textTransform: 'uppercase' }}>{en.game.technicalInfo}</h2>
-              <ul style={{ fontSize: '0.875rem', color: 'var(--color-muted)', display: 'flex', flexDirection: 'column', gap: '0.5rem', listStyle: 'none', padding: 0 }}>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <h2 style={{ fontSize: '1rem', color: 'var(--color-accent)', textTransform: 'uppercase' }}>{en.game.technicalInfo}</h2>
+              <ul style={{ fontSize: 'var(--font-size-base)', color: 'var(--color-text)', lineHeight: 1.8, display: 'flex', flexDirection: 'column', gap: '0.25rem', listStyle: 'none', padding: 0 }}>
                 <li><strong>Year:</strong> {game.year}</li>
                 <li><strong>Sales:</strong> {(game as any).salesVolume}</li>
                 <li><strong>Creators:</strong> {(game as any).creators}</li>
@@ -152,18 +152,28 @@ export function GameScreen({ slug }: GameScreenProps) {
           style={{
             flex: '0 0 35%',
             borderTop: '1px solid var(--color-border)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
+            padding: '1rem',
+            overflow: 'hidden',
           }}
         >
-          <div
-            className="placeholder-block"
-            style={{ width: '100%', height: '100%' }}
-            aria-label={en.game.controllerAlt(game.title)}
-          >
-            {game.title} controller
-          </div>
+          {slug === 'pong' ? (
+            <div style={{ position: 'relative', width: '100%', height: '100%' }}>
+              <Image
+                src="/controllers/AtariJoystick.png"
+                alt={en.game.controllerAlt(game.title)}
+                fill
+                style={{ objectFit: 'contain', objectPosition: 'center' }}
+              />
+            </div>
+          ) : (
+            <div
+              className="placeholder-block"
+              style={{ width: '100%', height: '100%' }}
+              aria-label={en.game.controllerAlt(game.title)}
+            >
+              {game.title} controller
+            </div>
+          )}
         </section>
       </div>
     </main>
