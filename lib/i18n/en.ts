@@ -19,11 +19,18 @@ export const en = {
     intro: 'INTRO',
     games: 'GAMES',
     credits: 'CREDITS',
+    options: 'OPTIONS',
     game1: 'PONG (1972)',
     game2: 'PAC-MAN (1980)',
-    game3: 'GAME 3',
-    game4: 'GAME 4',
-    game5: 'GAME 5',
+    game3: 'TETRIS (1984)',
+    game4: 'MARIO (1985)',
+    game5: 'MARIO 64 (1996)',
+  },
+
+  // ── Options Screen ──────────────────────────────────────────────────────
+  options: {
+    labelPt: 'PORTUGUÊS',
+    labelEn: 'ENGLISH',
   },
 
   // ── Intro Screen ────────────────────────────────────────────────────────
@@ -87,32 +94,59 @@ export const en = {
           'From a technological standpoint, running on an 8-bit Zilog Z80 processor, the game was a milestone in the efficient use of hardware and artificial intelligence. To deal with the limited memory of the time without losing visual vibrancy, Iwatani used a clever sprite system with reduced sub-palettes (about 4 colors per object), ensuring that each element was easily distinguishable on screen. The greatest revolution, however, was its deterministic, rule-based AI. Instead of moving randomly, each of the four ghosts runs a specific algorithm that dictates its "personality": the Red one pursues directly, the Pink one tries to anticipate and cut off the path, the Cyan one acts in a combined manner, and the Orange one alternates aggressiveness with evasive patrolling. This engineering created the illusion of intelligent and complex behavior, redefining how enemies would be programmed from then on.'
         ]
       },
-      'game-3': { 
-        title: 'Game 3', 
-        description: 'Placeholder description',
-        manufacturer: 'Manufacturer',
-        year: 'Year',
-        salesVolume: 'Sales',
-        creators: 'Creators',
-        content: ['Placeholder content'] 
+      tetris: {
+        title: 'Tetris (1984)',
+        description: 'A synthesis of the creation, the complex copyright battle, the mechanics, and the profound technological and cultural impacts of Tetris, the game of Soviet origin that revolutionized the entertainment and computing industries.',
+        console: 'Initially developed on the Electronika 60; massively popularized on the Game Boy and NES.',
+        year: '1984',
+        salesVolume: 'Over 520 million copies worldwide (including physical media and mobile downloads).',
+        creators: 'Alexey Pajitnov',
+        content: [
+          '### History and Behind the Scenes',
+          'Created in 1984 by Soviet engineer Alexey Pajitnov on the Electronika 60 computer, Tetris was born from its creator\'s fascination with mathematical puzzles, specifically pentominoes. By adapting the concept into blocks of four squares, the game quickly spread like a silent fever throughout the Soviet Union. The transition to the global market, however, triggered one of the most complex legal and licensing battles in video game history. The conflict involved businessman Robert Stein, the British company Mirrorsoft, Nintendo, and the Soviet state agency Elorg, operating under the strictness of communist bureaucracy in the midst of the Cold War. Through audacious negotiations led by Nikolai Belikov and Henk Rogers, Nintendo secured the rights, paving the way for its resounding success on the Game Boy handheld console. Pajitnov, who emigrated to the United States in 1991, only managed to regain control over the copyrights of his work in 1996, when he founded The Tetris Company.',
+          '### The Game and Its Mechanics',
+          'Tetris is a game of logical reasoning and quick reflexes focused on continuous spatial organization. The player must manipulate geometric pieces in free fall, known as Tetriminos, within a vertical rectangular matrix. Each of these pieces is made up of four joined blocks, taking on seven fundamental shapes (known by the letters I, J, L, O, S, T, and Z). The central objective is to move and rotate the pieces as they fall to form solid horizontal lines without leaving empty spaces. When a line is completed, it is eliminated from the matrix, granting points to the player and opening up space at the top. As the game progresses, the falling speed of the pieces gradually increases, raising the difficulty and requiring split-second decision-making to prevent the tower of blocks from reaching the upper limit of the screen, which ends the match.',
+          '### Historical Impact on Video Games and Society',
+          'Far beyond a simple pastime, Tetris broke geopolitical and demographic barriers. Released during years of tension, the title served as a form of cultural diplomacy, becoming the first Soviet software to be mass-consumed in the West, humanizing the country\'s image through entertainment. In the gaming industry, it pioneered what we now know as "casual games," introducing adults, women, and the elderly to the digital world due to its intuitive learning curve. Its success also gave rise to the "Tetris Effect," a phenomenon in which players report seeing the game\'s geometric patterns in everyday life or during sleep, becoming an object of study in neuroscience. Furthermore, the game\'s capacity for abstract organization and visual immersion has proven to have real therapeutic applications, being studied and used in the preventive treatment of Post-Traumatic Stress Disorder (PTSD) by blocking the fixation of intrusive mental images.',
+          '### Impacts on Computing and Technological Advancements',
+          'In the technological realm, Tetris acted as a practical laboratory for the refinement of hardware and software logic. The game popularized collision detection systems based on grid coordinates, distancing itself from the traditional pixel-perfect collisions of its time. It innovated by implementing "lock delay," a millisecond delay that allows the player to slide the piece at the very last moment before it locks into place, creating a tactile experience between the command and the graphical response. Additionally, it drove the use of advanced random number generation algorithms to prevent the unfair repetition of blocks. As a hardware milestone, the title was the "killer app" that proved the commercial viability of liquid crystal displays (LCDs), forcing the industry to optimize refresh rates to mitigate visual trails (ghosting) and consolidating techniques such as indexed palettes and dithering patterns to bypass color and bit-depth limitations in early systems.'
+        ]
       },
-      'game-4': { 
-        title: 'Game 4', 
-        description: 'Placeholder description',
-        manufacturer: 'Manufacturer',
-        year: 'Year',
-        salesVolume: 'Sales',
-        creators: 'Creators',
-        content: ['Placeholder content'] 
+      'mario-85': {
+        title: 'Mario (1985)',
+        description: 'A revolutionary platform game that introduced continuous side-scrolling and inertia-based physics, being primarily responsible for rescuing the video game industry from the 1983 crash and introducing interactive digital entertainment into millions of homes around the world.',
+        console: 'Famicom / Nintendo Entertainment System (NES)',
+        year: '1985',
+        salesVolume: 'Over 40 million copies',
+        creators: 'Shigeru Miyamoto and Takashi Tezuka',
+        content: [
+          '### The History and Behind the Scenes',
+          'The development of Super Mario Bros. took place in a challenging scenario for the digital entertainment industry, right after the great video game crash of 1983, which strongly contracted the North American market. Directed by Shigeru Miyamoto and Takashi Tezuka, the title was conceived to be the pinnacle of the team\'s experiences developing previous games like Excitebike and Kung Fu. Miyamoto envisioned a more colorful and grandiose project. Initially, the concept was not a conventional platform game, but rather an "athletic game" inspired by the *undōkai* — Japanese school sports events focused on circuits, jumps, and obstacles. To star in this adventure, Nintendo brought back the carpenter "Jumpman", who had already found success in Donkey Kong and the Mario Bros. arcade game.',
+          '### The Game and its Dynamics',
+          'Super Mario Bros. features a journey through 32 side-scrolling levels across the Mushroom Kingdom, where the player controls Mario (or his brother Luigi) with the goal of rescuing Princess Toadstool from King Koopa. The main mechanic is based on jumping, which serves both to overcome moving platforms and bottomless pits, and to defeat enemies like Goombas and Koopas. The gameplay is enhanced by collecting items that alter the character\'s attributes, such as the Super Mushroom, the Fire Flower, and the invincibility Star. The level design shines especially in how it teaches the mechanics: the famous World 1-1 acts as an organic tutorial, allowing the player to understand the software\'s logic, dangers, and rewards through their own experimentation and exploration.',
+          '### Historical and Sociocultural Impact',
+          'The impact of Super Mario Bros. transcends the impressive 40 million copies sold; it is credited as the main catalyst for the recovery of the Western console market. Alongside the NES, the game redefined the standard of quality and complexity that consumers could expect from home entertainment. Its success was so significant that, in the 1990s, Mario achieved the status of a pop icon, becoming more recognized by North American children than Mickey Mouse. On a societal level, the game and its console served as the first contact for countless families with interactive computing devices, helping to break down barriers of familiarity with technology and paving the way for the widespread adoption of personal computers.',
+          '### Technological and Computational Advancements',
+          'The title is a historical landmark in software optimization and computer engineering under extreme constraints. Running on the NES\'s 8-bit Ricoh 2A03 processor, the entire game was compressed into just 40 KB (32 KB for the code and 8 KB for the graphics), requiring it to be written entirely in Assembly language to ensure that the inertia physics, the enemy artificial intelligence, and Koji Kondo\'s iconic soundtrack ran simultaneously and without lag. To circumvent memory limitations and the cap of displaying about 25 simultaneous colors from a palette of 52, the developers employed brilliant techniques for reusing memory assets, such as using the exact same graphic sprite for the clouds and the bushes, differentiating them only by color. Furthermore, the adopted architecture made room for the use of expansion chips in the cartridges ("mappers"), allowing future titles to perform tasks that theoretically exceeded the console\'s native processing capabilities.'
+        ]
       },
-      'game-5': { 
-        title: 'Game-5', 
-        description: 'Placeholder description',
-        manufacturer: 'Manufacturer',
-        year: 'Year',
-        salesVolume: 'Sales',
-        creators: 'Creators',
-        content: ['Placeholder content'] 
+      'mario-64': {
+        title: 'Mario 64 (1996)',
+        description: 'A detailed analysis of Super Mario 64, detailing its development process, its fundamental gameplay mechanics, and the profound impact the work had on the video game industry, society, and the advancement of real-time computer graphics.',
+        console: 'Nintendo 64',
+        year: '1996',
+        salesVolume: 'Approximately 11.91 million original units.',
+        creators: 'Shigeru Miyamoto (Developed by Nintendo Entertainment Analysis & Development - EAD)',
+        content: [
+          '### History and Backstage',
+          'The idea of bringing Nintendo\'s mascot into the third dimension began to be conceived by producer and director Shigeru Miyamoto back in 1993, during the development of Star Fox. The Super Mario 64 project took about three years to be completed by the Nintendo EAD team, with one year dedicated exclusively to design and two years to programming and direct work. During this period, the team spent months perfecting Mario\'s movements in an empty virtual room before building any levels, focusing purely on the fun of movement; one of the first physics and animation tests involved catching a yellow rabbit, which was later included in the game as the character MIPS. Using the high-performance Nichimen N-World graphics software and featuring Koji Kondo\'s immersive soundtrack, the title was released as the flagship launch game for the Nintendo 64, alongside Pilotwings 64.',
+          '### The Game and its Mechanics',
+          'By abandoning the linear structure of two-dimensional obstacle courses, Super Mario 64 introduced a vast open world with multiple environments interconnected by a "hub world", the iconic Princess Peach\'s Castle. The central premise of rescuing the princess from the villain Bowser remains, but progression occurs through the free exploration of magical paintings that act as portals to other levels, where the player must collect the Power Stars. The title stands out for a broad and unprecedented move set for the time, allowing Mario to jump against walls, perform triple jumps, crawl, and dive. Furthermore, the game features dynamic sound design, where Koji Kondo\'s music adapts perfectly to the player\'s environment seamlessly, such as when transitioning from the surface to underwater.',
+          '### Historical Impact on Video Games and Society',
+          'Super Mario 64 is frequently considered the title that codified the rules of 3D games, directly influencing not only platform games but the entertainment industry as a whole. Before its release, the public was accustomed to restricted two-dimensional interfaces and navigation; by teaching millions of people to navigate freely in a three-dimensional space, controlling camera and depth, the game changed the digital spatial cognition of a generation. It consolidated the video game as an immersive experience based on exploration and multiple non-linear paths, establishing a standard of expectation that unfolded into modern 3D software, interactive maps, digital cinema, and, later, the virtual reality interfaces that society consumes today.',
+          '### Impact on Computing and Technological Advancements',
+          'Technologically, the game represented a milestone in the practical application of real-time computer graphics, made possible by Nintendo\'s partnership with Silicon Graphics (SGI) to create a 64-bit architecture in domestic hardware. This overcame the limitations of 32-bit competitors, processing complex polygons, vibrant colors without texture jitter, and using an efficient Z-buffer to calculate depth, preventing distant objects from being rendered incorrectly over closer ones. To optimize processing and maintain a stable frame rate, the game applied Level of Detail (LOD) concepts, simplifying polygonal models as they moved further from the camera. The greatest physical and interface revolution, however, was the analog stick with 360-degree pressure sensitivity combined with a dynamic virtual camera system (Lakitu). This combination robustly demonstrated how to apply vectors and spatial transformations to handle simplified physics and collisions in continuous environments.'
+        ]
       },
     }
   },

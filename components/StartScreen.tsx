@@ -2,14 +2,16 @@
 
 import { useEffect, useRef, useState } from 'react'
 import { useNavigationStore } from '@/store/navigationStore'
+import { useLanguageStore } from '@/store/languageStore'
+import { useDictionary } from '@/lib/i18n/useDictionary'
 import { NavigationLink } from '@/components/NavigationLink'
-import { en } from '@/lib/i18n/en'
+import { Switch } from '@/components/ui/8bit/switch'
 
-type MenuView = 'main' | 'games'
+type MenuView = 'main' | 'games' | 'options'
 
 /**
  * StartScreen — Client Component.
- * Manages the internal menu state (main options ↔ games submenu).
+ * Manages the internal menu state (main options ↔ games submenu ↔ options submenu).
  *
  * Option buttons are pure text (no background/border), styled with
  * .option-btn — completely separate from .btn and PixelButton.
@@ -22,6 +24,9 @@ type MenuView = 'main' | 'games'
 export function StartScreen() {
   const showGamesSubmenu = useNavigationStore((s) => s.showGamesSubmenu)
   const closeGamesSubmenu = useNavigationStore((s) => s.closeGamesSubmenu)
+  const lang = useLanguageStore((s) => s.lang)
+  const setLang = useLanguageStore((s) => s.setLang)
+  const dict = useDictionary()
 
   const [view, setView] = useState<MenuView>('main')
 
@@ -53,16 +58,18 @@ export function StartScreen() {
   const introRef = useRef<HTMLButtonElement>(null)
   const gamesRef = useRef<HTMLButtonElement>(null)
   const creditsRef = useRef<HTMLButtonElement>(null)
-  const backRef = useRef<HTMLButtonElement>(null)
+  const optionsRef = useRef<HTMLButtonElement>(null)
+  const backGamesRef = useRef<HTMLButtonElement>(null)
+  const backOptionsRef = useRef<HTMLButtonElement>(null)
 
   const gameRefs = useRef<(HTMLButtonElement | null)[]>([])
 
   const games = [
-    { id: 'start-game-1-btn', label: en.start.game1, slug: 'pong' },
-    { id: 'start-game-2-btn', label: en.start.game2, slug: 'pac-man' },
-    { id: 'start-game-3-btn', label: en.start.game3, slug: 'game-3' },
-    { id: 'start-game-4-btn', label: en.start.game4, slug: 'game-4' },
-    { id: 'start-game-5-btn', label: en.start.game5, slug: 'game-5' },
+    { id: 'start-game-1-btn', label: dict.start.game1, slug: 'pong' },
+    { id: 'start-game-2-btn', label: dict.start.game2, slug: 'pac-man' },
+    { id: 'start-game-3-btn', label: dict.start.game3, slug: 'tetris' },
+    { id: 'start-game-4-btn', label: dict.start.game4, slug: 'mario-85' },
+    { id: 'start-game-5-btn', label: dict.start.game5, slug: 'mario-64' },
   ]
 
   /** Flash-then-switch to the games submenu (no navigation). */
@@ -77,9 +84,33 @@ export function StartScreen() {
     setView('games')
   }
 
-  /** Flash-then-go-back to main view. */
-  async function handleBackClick() {
-    const el = backRef.current
+  /** Flash-then-switch to the options submenu (no navigation). */
+  async function handleOptionsClick() {
+    const el = optionsRef.current
+    if (!el) return
+    el.classList.add('option-btn--flashing')
+    await new Promise<void>((resolve) => {
+      el.addEventListener('animationend', () => resolve(), { once: true })
+    })
+    el.classList.remove('option-btn--flashing')
+    setView('options')
+  }
+
+  /** Flash-then-go-back to main view (from games). */
+  async function handleBackGamesClick() {
+    const el = backGamesRef.current
+    if (!el) return
+    el.classList.add('option-btn--flashing')
+    await new Promise<void>((resolve) => {
+      el.addEventListener('animationend', () => resolve(), { once: true })
+    })
+    el.classList.remove('option-btn--flashing')
+    setView('main')
+  }
+
+  /** Flash-then-go-back to main view (from options). */
+  async function handleBackOptionsClick() {
+    const el = backOptionsRef.current
     if (!el) return
     el.classList.add('option-btn--flashing')
     await new Promise<void>((resolve) => {
@@ -118,7 +149,7 @@ export function StartScreen() {
                 ref={introRef}
                 onBeforeNavigate={makeFlash(introRef)}
               >
-                {en.start.intro}
+                {dict.start.intro}
               </NavigationLink>
 
               {/* GAMES — opens submenu, no navigation */}
@@ -128,7 +159,7 @@ export function StartScreen() {
                 className="option-btn"
                 onClick={handleGamesClick}
               >
-                {en.start.games}
+                {dict.start.games}
               </button>
 
               {/* CREDITS — navigates, flash via onBeforeNavigate */}
@@ -140,8 +171,18 @@ export function StartScreen() {
                 ref={creditsRef}
                 onBeforeNavigate={makeFlash(creditsRef)}
               >
-                {en.start.credits}
+                {dict.start.credits}
               </NavigationLink>
+
+              {/* OPTIONS — opens options submenu, no navigation */}
+              <button
+                id="start-options-btn"
+                ref={optionsRef}
+                className="option-btn"
+                onClick={handleOptionsClick}
+              >
+                {dict.start.options}
+              </button>
             </>
           )}
 
@@ -150,12 +191,12 @@ export function StartScreen() {
               {/* BACK — returns to main view with flash */}
               <button
                 id="start-games-back-btn"
-                ref={backRef}
+                ref={backGamesRef}
                 className="option-btn"
                 style={{ alignSelf: 'flex-start', width: 'auto' }}
-                onClick={handleBackClick}
+                onClick={handleBackGamesClick}
               >
-                {en.nav.back}
+                {dict.nav.back}
               </button>
 
               {games.map(({ id, label, slug }, i) => {
@@ -186,6 +227,65 @@ export function StartScreen() {
                   </NavigationLink>
                 )
               })}
+            </>
+          )}
+
+          {view === 'options' && (
+            <>
+              {/* BACK — returns to main view with flash */}
+              <button
+                id="start-options-back-btn"
+                ref={backOptionsRef}
+                className="option-btn"
+                style={{ alignSelf: 'flex-start', width: 'auto' }}
+                onClick={handleBackOptionsClick}
+              >
+                {dict.nav.back}
+              </button>
+
+              {/* Language toggle — Portuguese ←→ English */}
+              <div
+                id="start-options-lang-toggle"
+                style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '1.5rem',
+                  marginTop: '1rem',
+                }}
+              >
+                <span
+                  style={{
+                    fontFamily: 'var(--font-heading), monospace',
+                    fontSize: 'clamp(1rem, 4vw, 1.5rem)',
+                    color: lang === 'pt' ? '#ffffff' : 'var(--color-muted)',
+                    transition: 'color 200ms ease',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em',
+                  }}
+                >
+                  {dict.options.labelPt}
+                </span>
+
+                <Switch
+                  id="lang-switch"
+                  checked={lang === 'en'}
+                  onCheckedChange={(checked) => setLang(checked ? 'en' : 'pt')}
+                  aria-label="Toggle language between Portuguese and English"
+                />
+
+                <span
+                  style={{
+                    fontFamily: 'var(--font-heading), monospace',
+                    fontSize: 'clamp(1rem, 4vw, 1.5rem)',
+                    color: lang === 'en' ? '#ffffff' : 'var(--color-muted)',
+                    transition: 'color 200ms ease',
+                    textTransform: 'uppercase',
+                    letterSpacing: '0.05em',
+                  }}
+                >
+                  {dict.options.labelEn}
+                </span>
+              </div>
             </>
           )}
         </div>

@@ -4,7 +4,7 @@ import { useEffect, useRef, useState } from 'react'
 import { useRouter } from 'next/navigation'
 import { Header } from '@/components/Header'
 import { useNavigationStore } from '@/store/navigationStore'
-import { en } from '@/lib/i18n/en'
+import { useDictionary } from '@/lib/i18n/useDictionary'
 
 const YOUTUBE_PLACEHOLDER = 'https://www.youtube.com/embed/dQw4w9WgXcQ'
 const COUNTDOWN_SECONDS = 30
@@ -19,6 +19,7 @@ const COUNTDOWN_SECONDS = 30
  * 3. User pauses the video.
  */
 export function IntroScreen() {
+  const dict = useDictionary()
   const router = useRouter()
   const openGamesSubmenu = useNavigationStore((s) => s.openGamesSubmenu)
   const pushRoute = useNavigationStore((s) => s.pushRoute)
@@ -139,7 +140,7 @@ export function IntroScreen() {
                 letterSpacing: '0.08em',
               }}
             >
-              {en.intro.countdownMessage(countdown)}
+              {dict.intro.countdownMessage(countdown)}
             </p>
           )}
 
@@ -149,7 +150,7 @@ export function IntroScreen() {
               className="btn"
               onClick={handleSeeGames}
             >
-              {en.intro.seeGames}
+              {dict.intro.seeGames}
             </button>
           )}
         </div>

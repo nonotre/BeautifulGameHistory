@@ -6,7 +6,7 @@ import { en } from '@/lib/i18n/en'
 
 type Props = { params: Promise<{ slug: string }> }
 
-const VALID_SLUGS = ['pong', 'pac-man', 'game-3', 'game-4', 'game-5'] as const
+const VALID_SLUGS = ['pong', 'pac-man', 'tetris', 'mario-85', 'mario-64'] as const
 
 /** Static generation for all 5 known game slugs. */
 export function generateStaticParams() {

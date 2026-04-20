@@ -2,7 +2,7 @@
 
 import { Header } from '@/components/Header'
 import { Paragraphs } from '@/components/Paragraphs'
-import { en } from '@/lib/i18n/en'
+import { useDictionary } from '@/lib/i18n/useDictionary'
 
 /**
  * CreditsScreen — Client Component.
@@ -10,6 +10,7 @@ import { en } from '@/lib/i18n/en'
  * Phase 1: gray image placeholder + placeholder text.
  */
 export function CreditsScreen() {
+  const dict = useDictionary()
   return (
     <main
       style={{
@@ -34,13 +35,13 @@ export function CreditsScreen() {
           <div
             className="placeholder-block"
             style={{ height: '16rem' }}
-            aria-label={en.credits.teamImageAlt}
+            aria-label={dict.credits.teamImageAlt}
           >
             team photo
           </div>
 
           {/* Placeholder text */}
-          <Paragraphs items={en.credits.placeholderText} />
+          <Paragraphs items={dict.credits.placeholderText} />
         </div>
       </div>
     </main>

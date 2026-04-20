@@ -2,11 +2,11 @@
 
 import { Header } from '@/components/Header'
 import { Paragraphs } from '@/components/Paragraphs'
-import { en } from '@/lib/i18n/en'
+import { useDictionary } from '@/lib/i18n/useDictionary'
 import Image from 'next/image'
 
 // Ordered game sequence used for NEXT navigation.
-const GAME_ORDER = ['pong', 'pac-man', 'game-3', 'game-4', 'game-5'] as const
+const GAME_ORDER = ['pong', 'pac-man', 'tetris', 'mario-85', 'mario-64'] as const
 type GameSlug = (typeof GAME_ORDER)[number]
 
 function getNextHref(slug: string): string | undefined {
@@ -36,8 +36,9 @@ interface GameScreenProps {
  * └─────────────────────────────┘
  */
 export function GameScreen({ slug }: GameScreenProps) {
+  const dict = useDictionary()
   const nextHref = getNextHref(slug)
-  const game = en.game.games[slug as keyof typeof en.game.games]
+  const game = dict.game.games[slug as keyof typeof dict.game.games]
 
   if (!game) return null
 
@@ -94,7 +95,7 @@ export function GameScreen({ slug }: GameScreenProps) {
               {slug === 'pong' ? (
                 <Image
                   src="/logos/pong.jpg"
-                  alt={en.game.logoAlt(game.title)}
+                  alt={dict.game.logoAlt(game.title)}
                   width={720}
                   height={405}
                   style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
@@ -103,7 +104,34 @@ export function GameScreen({ slug }: GameScreenProps) {
               ) : slug === 'pac-man' ? (
                 <Image
                   src="/logos/pac-man.png"
-                  alt={en.game.logoAlt(game.title)}
+                  alt={dict.game.logoAlt(game.title)}
+                  width={720}
+                  height={405}
+                  style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+                  priority
+                />
+              ) : slug === 'tetris' ? (
+                <Image
+                  src="/logos/tetris.png"
+                  alt={dict.game.logoAlt(game.title)}
+                  width={720}
+                  height={405}
+                  style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+                  priority
+                />
+              ) : slug === 'mario-85' ? (
+                <Image
+                  src="/logos/mario-85.svg"
+                  alt={dict.game.logoAlt(game.title)}
+                  width={720}
+                  height={405}
+                  style={{ width: '100%', height: 'auto', objectFit: 'contain' }}
+                  priority
+                />
+              ) : slug === 'mario-64' ? (
+                <Image
+                  src="/logos/mario-64.png"
+                  alt={dict.game.logoAlt(game.title)}
                   width={720}
                   height={405}
                   style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
@@ -113,7 +141,7 @@ export function GameScreen({ slug }: GameScreenProps) {
                 <div
                   className="placeholder-block"
                   style={{ height: '10rem', width: '100%' }}
-                  aria-label={en.game.logoAlt(game.title)}
+                  aria-label={dict.game.logoAlt(game.title)}
                 >
                   {game.title} logo
                 </div>
@@ -129,7 +157,7 @@ export function GameScreen({ slug }: GameScreenProps) {
           {/* Technical and Market Information (Only if exists) */}
           {(game as any).salesVolume && (
             <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              <h2 style={{ fontSize: '1rem', color: 'var(--color-accent)', textTransform: 'uppercase' }}>{en.game.technicalInfo}</h2>
+              <h2 style={{ fontSize: '1rem', color: 'var(--color-accent)', textTransform: 'uppercase' }}>{dict.game.technicalInfo}</h2>
               <ul style={{ fontSize: 'var(--font-size-base)', color: 'var(--color-text)', lineHeight: 1.8, display: 'flex', flexDirection: 'column', gap: '0.25rem', listStyle: 'none', padding: 0 }}>
                 <li><strong>Year:</strong> {game.year}</li>
                 <li><strong>Sales:</strong> {(game as any).salesVolume}</li>
@@ -170,7 +198,7 @@ export function GameScreen({ slug }: GameScreenProps) {
             <div style={{ position: 'relative', width: '100%', height: '100%' }}>
               <Image
                 src="/controllers/AtariJoystick.png"
-                alt={en.game.controllerAlt(game.title)}
+                alt={dict.game.controllerAlt(game.title)}
                 fill
                 style={{ objectFit: 'contain', objectPosition: 'center' }}
               />
@@ -179,7 +207,7 @@ export function GameScreen({ slug }: GameScreenProps) {
             <div
               className="placeholder-block"
               style={{ width: '100%', height: '100%' }}
-              aria-label={en.game.controllerAlt(game.title)}
+              aria-label={dict.game.controllerAlt(game.title)}
             >
               {game.title} controller
             </div>

@@ -3,7 +3,7 @@
 import { useRouter } from 'next/navigation'
 import { useNavigationStore } from '@/store/navigationStore'
 import { Button } from '@/components/ui/8bit/button'
-import { en } from '@/lib/i18n/en'
+import { useDictionary } from '@/lib/i18n/useDictionary'
 
 interface HeaderProps {
   /** Whether to render the NEXT button. */
@@ -22,6 +22,7 @@ interface HeaderProps {
  * from Server Component parents — no functions passed across the boundary.
  */
 export function Header({ hasNext = false, nextHref }: HeaderProps) {
+  const dict = useDictionary()
   const router = useRouter()
   const pushRoute = useNavigationStore((s) => s.pushRoute)
   const popRoute = useNavigationStore((s) => s.popRoute)
@@ -58,7 +59,7 @@ export function Header({ hasNext = false, nextHref }: HeaderProps) {
         aria-label="Go back"
         size="lg"
       >
-        {en.nav.back}
+        {dict.nav.back}
       </Button>
 
       {hasNext && nextHref && (
@@ -68,7 +69,7 @@ export function Header({ hasNext = false, nextHref }: HeaderProps) {
           aria-label="Go to next page"
           size="lg"
         >
-          {en.nav.next}
+          {dict.nav.next}
         </Button>
       )}
     </header>
