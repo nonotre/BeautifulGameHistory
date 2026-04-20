@@ -1,0 +1,24 @@
+# Tetris: O Quebra-Cabeça Perfeito
+
+**Descrição:** 
+Uma síntese sobre a criação, a complexa batalha de direitos autorais, o funcionamento e os profundos impactos tecnológicos e culturais de Tetris, o jogo de origem soviética que revolucionou a indústria do entretenimento e da computação.
+
+**Tags:**
+*   **Ano:** 1984
+*   **Console:** Desenvolvido inicialmente no Electronika 60; popularizado massivamente no Game Boy e no NES.
+*   **Quantidade de vendas:** Mais de 520 milhões de cópias mundialmente (incluindo mídias físicas e downloads móveis).
+*   **Criador:** Alexey Pajitnov
+
+---
+
+### História e Bastidores
+Criado em 1984 pelo engenheiro soviético Alexey Pajitnov no computador Electronika 60, Tetris nasceu do fascínio de seu criador por quebra-cabeças matemáticos, especificamente os pentaminós. Ao adaptar o conceito para blocos de quatro quadrados, o jogo rapidamente se espalhou como uma febre silenciosa por toda a União Soviética. A transição para o mercado global, no entanto, desencadeou uma das mais complexas batalhas judiciais e de licenciamento da história dos videogames. O conflito envolveu o empresário Robert Stein, a britânica Mirrorsoft, a Nintendo e a agência estatal soviética Elorg, operando sob o rigor da burocracia comunista em plena Guerra Fria. Através de negociações audaciosas conduzidas por Nikolai Belikov e Henk Rogers, a Nintendo garantiu os direitos, pavimentando o caminho para o sucesso estrondoso no console portátil Game Boy. Pajitnov, que emigrou para os Estados Unidos em 1991, apenas conseguiu reaver o controle sobre os direitos autorais de sua obra em 1996, quando fundou a The Tetris Company.
+
+### O Jogo e Suas Mecânicas
+Tetris é um jogo de raciocínio lógico e reflexos rápidos focado na organização espacial contínua. O jogador deve manipular peças geométricas em queda livre, conhecidas como Tetriminos, dentro de uma matriz retangular vertical. Cada uma dessas peças é formada por quatro blocos unidos, assumindo sete formatos fundamentais (conhecidos pelas letras I, J, L, O, S, T e Z). O objetivo central é transladar e rotacionar as peças enquanto caem para formar linhas horizontais sólidas, sem deixar espaços vazios. Quando uma linha é completada, ela é eliminada da matriz, concedendo pontos ao jogador e abrindo espaço no topo. Com o avanço do jogo, a velocidade de queda das peças aumenta progressivamente, elevando a dificuldade e exigindo tomadas de decisão em frações de segundo para evitar que a torre de blocos alcance o limite superior da tela, o que decreta o fim da partida.
+
+### Impacto Histórico, nos Videogames e na Sociedade
+Muito além de um simples passatempo, Tetris quebrou barreiras geopolíticas e demográficas. Lançado durante os anos de tensão, o título serviu como uma forma de diplomacia cultural, sendo o primeiro software soviético a ser consumido em massa no Ocidente, humanizando a imagem do país por meio do entretenimento. Na indústria dos jogos, foi o pioneiro do que hoje conhecemos como "jogos casuais", introduzindo adultos, mulheres e idosos ao mundo digital devido à sua curva de aprendizado intuitiva. O sucesso também originou o "Efeito Tetris", fenômeno em que jogadores relatam enxergar padrões geométricos do jogo no cotidiano ou durante o sono, tornando-se objeto de estudo da neurociência. Além disso, a capacidade de organização abstrata e imersão visual do jogo demonstrou possuir aplicações terapêuticas reais, sendo estudado e utilizado no tratamento preventivo do Transtorno de Estresse Pós-Traumático (TEPT) por bloquear a fixação de imagens mentais intrusivas.
+
+### Impactos na Computação e Avanços Tecnológicos
+No âmbito tecnológico, Tetris atuou como um laboratório prático para o aperfeiçoamento de lógicas de hardware e software. O jogo popularizou sistemas de detecção de colisão baseados em coordenadas de grade (grid-based), distanciando-se das colisões por pixels tradicionais de sua época. Inovou ao implementar o "lock delay", um atraso milimétrico que permite ao jogador deslizar a peça no último instante antes do travamento, criando uma experiência tátil entre o comando e a resposta gráfica. Além disso, impulsionou o uso de algoritmos avançados de geração de números aleatórios para evitar a repetição injusta de blocos. Como marco de hardware, o título foi a "killer app" que comprovou a viabilidade comercial das telas de cristal líquido (LCD), forçando a indústria a otimizar taxas de atualização para mitigar rastros visuais (ghosting) e consolidando técnicas como paletas indexadas e padrões de preenchimento (dithering) para driblar limitações de cor e profundidade de bits em sistemas primitivos.

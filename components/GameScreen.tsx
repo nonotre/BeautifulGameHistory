@@ -6,7 +6,7 @@ import { en } from '@/lib/i18n/en'
 import Image from 'next/image'
 
 // Ordered game sequence used for NEXT navigation.
-const GAME_ORDER = ['pong', 'game-2', 'game-3', 'game-4', 'game-5'] as const
+const GAME_ORDER = ['pong', 'pac-man', 'game-3', 'game-4', 'game-5'] as const
 type GameSlug = (typeof GAME_ORDER)[number]
 
 function getNextHref(slug: string): string | undefined {
@@ -100,6 +100,15 @@ export function GameScreen({ slug }: GameScreenProps) {
                   style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
                   priority
                 />
+              ) : slug === 'pac-man' ? (
+                <Image
+                  src="/logos/pac-man.png"
+                  alt={en.game.logoAlt(game.title)}
+                  width={720}
+                  height={405}
+                  style={{ width: '100%', height: 'auto', objectFit: 'cover' }}
+                  priority
+                />
               ) : (
                 <div
                   className="placeholder-block"
@@ -111,9 +120,9 @@ export function GameScreen({ slug }: GameScreenProps) {
               )}
             </div>
 
-            {/* Game Metadata (Manufacturer — Year) */}
+            {/* Game Metadata (Platform — Year) */}
             <p style={{ color: 'var(--color-muted)', fontSize: '0.875rem', textAlign: 'center', textTransform: 'uppercase', letterSpacing: '0.05em' }}>
-              {game.manufacturer} — {game.year}
+              {((game as any).manufacturer || (game as any).console)} — {game.year}
             </p>
           </div>
 
@@ -135,10 +144,11 @@ export function GameScreen({ slug }: GameScreenProps) {
           {/* Body content with headings */}
           <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
             {game.content.map((item, idx) => {
-              // Very simple heading detection
-              const isHeading = idx === 0 || idx === 3 || idx === 6 || idx === 9;
+              // Headings are identified by the '### ' prefix convention.
+              const isHeading = item.startsWith('### ')
+              const displayText = isHeading ? item.slice(4) : item
               return isHeading ? (
-                <h2 key={idx} style={{ fontSize: '1rem', color: 'var(--color-accent)', textTransform: 'uppercase', marginTop: '1rem' }}>{item}</h2>
+                <h2 key={idx} style={{ fontSize: '1rem', color: 'var(--color-accent)', textTransform: 'uppercase', marginTop: '1rem' }}>{displayText}</h2>
               ) : (
                 <Paragraphs key={idx} items={[item]} />
               )

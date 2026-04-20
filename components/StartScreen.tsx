@@ -59,7 +59,7 @@ export function StartScreen() {
 
   const games = [
     { id: 'start-game-1-btn', label: en.start.game1, slug: 'pong' },
-    { id: 'start-game-2-btn', label: en.start.game2, slug: 'game-2' },
+    { id: 'start-game-2-btn', label: en.start.game2, slug: 'pac-man' },
     { id: 'start-game-3-btn', label: en.start.game3, slug: 'game-3' },
     { id: 'start-game-4-btn', label: en.start.game4, slug: 'game-4' },
     { id: 'start-game-5-btn', label: en.start.game5, slug: 'game-5' },
