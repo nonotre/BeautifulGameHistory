@@ -1,8 +1,8 @@
 'use client'
 
+import { useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { useNavigationStore } from '@/store/navigationStore'
-import { Button } from '@/components/ui/8bit/button'
 import { useDictionary } from '@/lib/i18n/useDictionary'
 
 interface HeaderProps {
@@ -17,9 +17,8 @@ interface HeaderProps {
  * - BACK: pops the navigationStore history stack and router.push to that route.
  * - NEXT: pushes current route then router.push to nextHref.
  *
- * Both buttons use the 8bitcn Button component (pixel-art style).
- * Only serializable primitives (boolean, string) are accepted as props
- * from Server Component parents — no functions passed across the boundary.
+ * Both buttons use the same .option-btn style and flash animation as the
+ * homepage menu buttons (StartScreen).
  */
 export function Header({ hasNext = false, nextHref }: HeaderProps) {
   const dict = useDictionary()
@@ -27,7 +26,22 @@ export function Header({ hasNext = false, nextHref }: HeaderProps) {
   const pushRoute = useNavigationStore((s) => s.pushRoute)
   const popRoute = useNavigationStore((s) => s.popRoute)
 
-  function handleBack() {
+  const backRef = useRef<HTMLButtonElement>(null)
+  const nextRef = useRef<HTMLButtonElement>(null)
+
+  /** Runs the 450ms flash animation on the given button element. */
+  async function flash(ref: React.RefObject<HTMLButtonElement | null>) {
+    const el = ref.current
+    if (!el) return
+    el.classList.add('option-btn--flashing')
+    await new Promise<void>((resolve) => {
+      el.addEventListener('animationend', () => resolve(), { once: true })
+    })
+    el.classList.remove('option-btn--flashing')
+  }
+
+  async function handleBack() {
+    await flash(backRef)
     const destination = popRoute()
     if (destination) {
       router.push(destination)
@@ -36,8 +50,9 @@ export function Header({ hasNext = false, nextHref }: HeaderProps) {
     }
   }
 
-  function handleNext() {
+  async function handleNext() {
     if (!nextHref) return
+    await flash(nextRef)
     const currentPath = window.location.pathname
     pushRoute(currentPath)
     router.push(nextHref)
@@ -50,27 +65,34 @@ export function Header({ hasNext = false, nextHref }: HeaderProps) {
         justifyContent: 'space-between',
         alignItems: 'center',
         padding: '1rem 0',
-        borderBottom: '1px solid var(--color-border)',
+        // Reads --theme-border injected by GameScreen on the parent <main>.
+        borderBottom: '4px solid var(--theme-border)',
       }}
     >
-      <Button
+      <button
+        ref={backRef}
         id="header-back-btn"
+        className="option-btn"
+        // Reads --theme-btn injected by GameScreen on the parent <main>.
+        style={{ width: 'auto', textAlign: 'left', color: 'var(--theme-btn)' }}
         onClick={handleBack}
         aria-label="Go back"
-        size="lg"
       >
         {dict.nav.back}
-      </Button>
+      </button>
 
       {hasNext && nextHref && (
-        <Button
+        <button
+          ref={nextRef}
           id="header-next-btn"
+          className="option-btn"
+          // Reads --theme-btn injected by GameScreen on the parent <main>.
+          style={{ width: 'auto', textAlign: 'right', color: 'var(--theme-btn)' }}
           onClick={handleNext}
           aria-label="Go to next page"
-          size="lg"
         >
           {dict.nav.next}
-        </Button>
+        </button>
       )}
     </header>
   )

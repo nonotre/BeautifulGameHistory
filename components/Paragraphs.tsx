@@ -6,7 +6,7 @@ export function Paragraphs({ items }: { items: readonly string[] }) {
           key={i}
           style={{
             lineHeight: 1.8,
-            color: 'var(--color-text)',
+            color: 'var(--theme-text)',
             fontSize: 'var(--font-size-base)',
           }}
         >
