@@ -200,6 +200,7 @@ export function GameScreen({ slug }: GameScreenProps) {
           {/* Description + body content — all animated character-by-character */}
           <AnimatedContent
             content={[game.description, ...game.content]}
+            gameSlug={slug as import('@/lib/themes').GameSlug}
             scrollContainerRef={scrollContainerRef}
           />
         </section>

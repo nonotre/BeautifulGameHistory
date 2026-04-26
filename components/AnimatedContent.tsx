@@ -1,9 +1,28 @@
 'use client'
 
-import { useCallback, useEffect, useRef, type RefObject } from 'react'
+import { useCallback, useEffect, useRef, type ComponentType, type RefObject } from 'react'
 import { AnimatedBlock } from './AnimatedBlock'
+import { Mario85Cursor } from './reveal-cursors/Mario85Cursor'
+import { Mario64Cursor } from './reveal-cursors/Mario64Cursor'
+import type { CursorProps } from './reveal-cursors/types'
+import type { GameSlug } from '@/lib/themes'
 
 const CHAR_INTERVAL_MS = 12
+
+// ── Cursor registry ────────────────────────────────────────────────────────
+// Only games with sprite cursors appear here. Other slugs fall back to the
+// blinking `|` cursor (reveal-cursor class, unchanged behavior).
+
+const CURSOR_MAP: Partial<Record<GameSlug, ComponentType<CursorProps>>> = {
+  'mario-85': Mario85Cursor,
+  'mario-64': Mario64Cursor,
+}
+
+/** Public URL of each sprite — used to preload natural dimensions. */
+const SPRITE_URL_MAP: Partial<Record<GameSlug, string>> = {
+  'mario-85': '/animations/green_shell_mario85.png',
+  'mario-64': '/animations/hat-mario64.png',
+}
 
 // ── Types ─────────────────────────────────────────────────────────────────
 
@@ -13,6 +32,7 @@ interface VisualLine {
 
 interface AnimatedContentProps {
   content: readonly string[]
+  gameSlug: GameSlug
   /**
    * Ref to the scrollable section — used as IntersectionObserver root and
    * scroll event target so the engine reacts to the correct viewport.
@@ -22,7 +42,7 @@ interface AnimatedContentProps {
 
 // ── Component ─────────────────────────────────────────────────────────────
 
-export function AnimatedContent({ content, scrollContainerRef }: AnimatedContentProps) {
+export function AnimatedContent({ content, gameSlug, scrollContainerRef }: AnimatedContentProps) {
 
   // ── Stable refs (no re-renders during animation) ─────────────────────
 
@@ -42,7 +62,20 @@ export function AnimatedContent({ content, scrollContainerRef }: AnimatedContent
   const running = useRef(false)
 
   const cursorRef = useRef<HTMLSpanElement | null>(null)
+  const pieceRef = useRef<HTMLDivElement | null>(null)
   const containerRef = useRef<HTMLDivElement | null>(null)
+
+  /** Cached pieceHeight for the sprite cursor (updated in moveCursor). */
+  const pieceHeightRef = useRef(0)
+  /**
+   * naturalWidth / naturalHeight of the sprite image — preloaded once so
+   * pieceWidth can be derived as pieceHeight × aspectRatio without relying
+   * on offsetWidth of a display:none element (which is always 0).
+   */
+  const spriteAspectRatioRef = useRef(1)
+
+  // Determine whether this game uses a sprite cursor.
+  const SpriteCursor = CURSOR_MAP[gameSlug] ?? null
 
   // ── Helpers ───────────────────────────────────────────────────────────
 
@@ -56,17 +89,55 @@ export function AnimatedContent({ content, scrollContainerRef }: AnimatedContent
   }
 
   function moveCursor(el: HTMLSpanElement) {
-    const cursor = cursorRef.current
-    const container = containerRef.current
-    if (!cursor || !container) return
     const r = el.getBoundingClientRect()
-    const cr = container.getBoundingClientRect()
-    cursor.style.transform = `translate(${r.right - cr.left}px, ${r.top - cr.top}px)`
-    cursor.style.display = 'inline'
+
+    if (SpriteCursor) {
+      // ── Sprite cursor — position:fixed, viewport coords ────────────
+      const piece = pieceRef.current
+      if (!piece) return
+
+      // Measure line metrics — pieceHeight = fontSize + inter-line gap (per plan §2).
+      const style = getComputedStyle(el.parentElement!)
+      const fontSize = parseFloat(style.fontSize)
+      const lineHeightRaw = style.lineHeight
+      const lineHeight =
+        lineHeightRaw === 'normal' ? fontSize * 1.2 : parseFloat(lineHeightRaw)
+      const gap = lineHeight - fontSize
+      const pieceHeight = fontSize + gap
+      pieceHeightRef.current = pieceHeight
+
+      // Update the img's height directly (prop can't update without re-render).
+      const img = piece.querySelector('img')
+      if (img) (img as HTMLElement).style.height = `${pieceHeight}px`
+
+      // Derive pieceWidth from preloaded aspect ratio.
+      const pieceWidth = pieceHeight * spriteAspectRatioRef.current
+
+      // Vertically center the piece on the character's line.
+      const verticalCenter = r.top + (r.height / 2) - (pieceHeight / 2)
+
+      // Place sprite: right edge aligns with char's right edge.
+      piece.style.left = `${r.right - pieceWidth}px`
+      piece.style.top = `${verticalCenter}px`
+      piece.style.display = 'block'
+    } else {
+      // ── Fallback blinking `|` cursor — position:absolute in container ──
+      const container = containerRef.current
+      if (!container) return
+      const cursor = cursorRef.current
+      if (!cursor) return
+      const cr = container.getBoundingClientRect()
+      cursor.style.transform = `translate(${r.right - cr.left}px, ${r.top - cr.top}px)`
+      cursor.style.display = 'inline'
+    }
   }
 
   function hideCursor() {
-    if (cursorRef.current) cursorRef.current.style.display = 'none'
+    if (SpriteCursor) {
+      if (pieceRef.current) pieceRef.current.style.display = 'none'
+    } else {
+      if (cursorRef.current) cursorRef.current.style.display = 'none'
+    }
   }
 
   // ── RAF tick ──────────────────────────────────────────────────────────
@@ -128,6 +199,24 @@ export function AnimatedContent({ content, scrollContainerRef }: AnimatedContent
     }
 
     rafId.current = requestAnimationFrame(tick)
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
+  // ── Sprite preload ────────────────────────────────────────────────────
+  // Load the sprite image off-screen so we have naturalWidth/naturalHeight
+  // before the animation loop starts. This avoids offsetWidth=0 from a
+  // display:none element.
+
+  useEffect(() => {
+    const url = SPRITE_URL_MAP[gameSlug]
+    if (!url) return
+    const img = new window.Image()
+    img.onload = () => {
+      if (img.naturalHeight > 0) {
+        spriteAspectRatioRef.current = img.naturalWidth / img.naturalHeight
+      }
+    }
+    img.src = url
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -261,15 +350,27 @@ export function AnimatedContent({ content, scrollContainerRef }: AnimatedContent
         />
       ))}
 
-      {/* Blinking cursor — absolutely positioned, moved by JS */}
-      <span
-        ref={cursorRef}
-        className="reveal-cursor"
-        aria-hidden="true"
-        style={{ display: 'none' }}
-      >
-        |
-      </span>
+      {SpriteCursor ? (
+        /* Sprite cursor — absolutely positioned, moved by JS */
+        <div
+          ref={pieceRef}
+          className="reveal-piece"
+          aria-hidden="true"
+          style={{ display: 'none' }}
+        >
+          <SpriteCursor pieceHeight={pieceHeightRef.current || 20} />
+        </div>
+      ) : (
+        /* Blinking cursor — absolutely positioned, moved by JS */
+        <span
+          ref={cursorRef}
+          className="reveal-cursor"
+          aria-hidden="true"
+          style={{ display: 'none' }}
+        >
+          |
+        </span>
+      )}
     </div>
   )
 }
