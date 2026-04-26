@@ -313,6 +313,24 @@ h6 {
   letter-spacing: 0.1em;
   text-transform: uppercase;
 }
+
+/* ── Text reveal animation cursor ───────────────────────────────────── */
+@keyframes reveal-cursor-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.reveal-cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  font-weight: 400;
+  color: var(--theme-text);
+  animation: reveal-cursor-blink 0.6s step-end infinite;
+  will-change: transform;
+}
+
 /*
  ---break---
  */

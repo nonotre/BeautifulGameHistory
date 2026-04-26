@@ -1,11 +1,12 @@
 'use client'
 
+import { AnimatedContent } from '@/components/AnimatedContent'
 import { Header } from '@/components/Header'
 import { InfoCard } from '@/components/InfoCard'
-import { Paragraphs } from '@/components/Paragraphs'
 import { useDictionary } from '@/lib/i18n/useDictionary'
 import { SEMANTIC_MAP, type GameSlug } from '@/lib/themes'
 import Image from 'next/image'
+import { useRef } from 'react'
 
 // Ordered game sequence used for NEXT navigation.
 const GAME_ORDER = ['pong', 'pac-man', 'tetris', 'mario-85', 'mario-64'] as const
@@ -44,6 +45,7 @@ export function GameScreen({ slug }: GameScreenProps) {
   const dict = useDictionary()
   const nextHref = getNextHref(slug)
   const game = dict.game.games[slug as keyof typeof dict.game.games]
+  const scrollContainerRef = useRef<HTMLElement>(null)
 
   // Resolve semantic theme — fall back to pong (all-white) for unknown slugs.
   const theme = SEMANTIC_MAP[slug as GameSlug] ?? SEMANTIC_MAP['pong']
@@ -79,6 +81,7 @@ export function GameScreen({ slug }: GameScreenProps) {
 
         {/* Content zone — scrollable, ~60vh (adjusted for more text) */}
         <section
+          ref={scrollContainerRef}
           aria-label="Game content"
           className="hide-scrollbar"
           style={{
@@ -194,22 +197,11 @@ export function GameScreen({ slug }: GameScreenProps) {
             </div>
           )}
 
-          {/* Game Description */}
-          <Paragraphs items={[game.description]} />
-
-          {/* Body content with headings */}
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
-            {game.content.map((item, idx) => {
-              // Headings are identified by the '### ' prefix convention.
-              const isHeading = item.startsWith('### ')
-              const displayText = isHeading ? item.slice(4) : item
-              return isHeading ? (
-                <h2 key={idx} style={{ fontSize: '1rem', color: 'var(--theme-heading)', textTransform: 'uppercase', marginTop: '1rem' }}>{displayText}</h2>
-              ) : (
-                <Paragraphs key={idx} items={[item]} />
-              )
-            })}
-          </div>
+          {/* Description + body content — all animated character-by-character */}
+          <AnimatedContent
+            content={[game.description, ...game.content]}
+            scrollContainerRef={scrollContainerRef}
+          />
         </section>
 
         {/* Controller zone — fixed height, ~35vh */}
