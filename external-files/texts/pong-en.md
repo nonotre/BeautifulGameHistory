@@ -11,6 +11,7 @@
 ---
 
 ### History and Behind the Scenes of Development
+The evolution of video games has its roots in laboratory experiments from the 1950s and 1960s, notably Tennis for Two (1958), for its pioneering use of visual interfaces on oscilloscopes, and Spacewar! (1962), for its logical complexity in academic computing environments such as MIT. However, despite the technical pioneering of these milestones, Pong (1972) is adopted as the fundamental starting point of this analysis, given its academic transcendence towards the gaming market.
 The project that brought Pong to life was not born with the ambition to dominate the market, but rather as a "warm-up" exercise assigned to engineer Allan Alcorn by the founders of the newly born Atari, Nolan Bushnell and Ted Dabney. Inspired by the Magnavox Odyssey system's table tennis, Alcorn used his knowledge of logic circuits to create something innovative, even without prior experience in the gaming field. The team's genius became apparent during the first field test, conducted at *Andy Capp’s Tavern*, using a modified TV in a wooden cabinet: in just ten days, the machine simply stopped working because its coin mechanism was completely jammed with quarters. Unable to secure traditional financing—since banks associated the idea with frowned-upon gambling and pinball machines—Bushnell maneuvered the market, rejecting partnership offers from competitors and leading Atari to manufacture the arcade cabinet itself, cementing its place in the industry.
 
 ### How the Game Works

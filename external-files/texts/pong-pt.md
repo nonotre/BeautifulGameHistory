@@ -11,6 +11,7 @@
 ---
 
 ### A História e os Bastidores do Desenvolvimento
+A evolução dos jogos eletrônicos possui raízes em experimentos laboratoriais das décadas de 1950 e 1960, destacando-se o Tennis for Two (1958), pelo uso pioneiro de interfaces visuais em osciloscópios, e o Spacewar! (1962), pela complexidade lógica em ambientes computacionais acadêmicos como em seu caso o MIT. Contudo, apesar do pioneirismo técnico desses marcos, o Pong (1972) é adotado como o ponto de partida fundamental desta análise, tendo em vista sua transcendência acadêmica rumo ao mercado dos jogos.
 O projeto que daria vida ao Pong não nasceu com pretensões de dominar o mercado, mas sim como um exercício de "aquecimento" atribuído ao engenheiro Allan Alcorn pelos fundadores da recém-nascida Atari, Nolan Bushnell e Ted Dabney. Inspirando-se no tênis de mesa do sistema Magnavox Odyssey, Alcorn utilizou seus conhecimentos em circuitos lógicos para criar algo inovador, mesmo sem experiência prévia na área de jogos. A genialidade da equipe transpareceu no primeiro teste de campo, realizado no bar *Andy Capp’s Tavern*, utilizando uma TV adaptada em um gabinete de madeira: em apenas dez dias, a máquina simplesmente parou de funcionar porque seu coletor de moedas estava completamente abarrotado. Sem conseguir o financiamento tradicional — já que os bancos atrelavam a ideia aos malvistos jogos de azar e pinballs — Bushnell manobrou o mercado, recusando ofertas de parcerias com concorrentes e levando a própria Atari a fabricar o fliperama, o que a consagrou na indústria.
 
 ### Como Funciona o Jogo

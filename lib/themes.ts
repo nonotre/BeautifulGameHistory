@@ -105,7 +105,7 @@ export const SEMANTIC_MAP: Record<GameSlug, SemanticTheme> = {
     bg:      PRIMITIVES['mario-64']['--mario64-navy'],
     border:  PRIMITIVES['mario-64']['--mario64-blue'],
     text:    PRIMITIVES['mario-64']['--mario64-lavender'],
-    heading: PRIMITIVES['mario-64']['--mario64-yellow'],
+    heading: PRIMITIVES['mario-64']['--mario64-red'],
     btn:     PRIMITIVES['mario-64']['--mario64-yellow'],
   },
 }
