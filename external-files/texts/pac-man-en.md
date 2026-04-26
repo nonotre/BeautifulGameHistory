@@ -5,11 +5,13 @@ An overview of the creation, innovative mechanics, and cultural and technologica
 
 ---
 
-### Fact Sheet (Tags)
-*   **Year:** 1980
-*   **Console:** Arcade
-*   **Sales volume:** Over 400,000 arcade cabinets sold worldwide (making it one of the highest-grossing games in history)
-*   **Creator:** Toru Iwatani
+**Tags:**
+*   **Year highlight:** 1980
+*   **Year description:** Released for arcades by Namco.
+*   **Sales highlight:** +400,000
+*   **Sales description:** Arcade cabinets sold worldwide, one of the highest-grossing games in history.
+*   **Creators highlight:** Toru Iwatani
+*   **Creators description:** Developed at Namco.
 
 ---
 

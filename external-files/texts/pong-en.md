@@ -2,11 +2,13 @@
 
 **Description:** An analysis of the classic Pong (1972), covering everything from its behind-the-scenes hardware engineering development to its immeasurable commercial and cultural impact. The work consolidates the transition of electronic games from isolated academic experiments to the first major mass entertainment phenomenon worldwide.
 
-### Technical and Market Information
-* **Year:** 1972 (Arcade) / 1975 (Dedicated Home Console)
-* **Console:** Arcade (Coin-op machine) and Dedicated Home Console (*Home Pong*)
-* **Sales Volume:** Reached over 8,000 arcade machines in 1974 (with estimates of around 19,000 units sold in total for its original arcade version) and approximately 150,000 units of *Home Pong* in just one season (1975).
-* **Creators:** Developed by engineer Allan Alcorn, under the direction of Atari Inc. founders Nolan Bushnell and Ted Dabney.
+**Tags:**
+*   **Year highlight:** 1972
+*   **Year description:** Arcade release. Home console version followed in 1975.
+*   **Sales highlight:** +8,000
+*   **Sales description:** Arcade machines by 1974. ~150,000 Home Pong units sold in a single season (1975).
+*   **Creators highlight:** Allan Alcorn
+*   **Creators description:** Developed under direction of Atari Inc. founders Nolan Bushnell and Ted Dabney.
 
 ---
 

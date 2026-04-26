@@ -2,11 +2,13 @@
 
 **Descrição:** Uma análise sobre o clássico Pong (1972), abordando desde seus bastidores de desenvolvimento focados em engenharia de hardware até seu imensurável impacto comercial e cultural. A obra consolida a transição dos jogos eletrônicos de experimentos acadêmicos isolados para o primeiro grande fenômeno de entretenimento de massa no mundo inteiro.
 
-### Informações Técnicas e de Mercado
-* **Ano:** 1972 (Arcade) / 1975 (Console Doméstico)
-* **Console:** Arcade (Máquina de Fliperama) e Console Doméstico Dedicado (*Home Pong*)
-* **Quantidade de Vendas:** Atingiu mais de 8.000 máquinas de arcade em 1974 (com estimativas de cerca de 19.000 unidades vendidas no total de sua versão original de fliperama) e aproximadamente 150.000 unidades do *Home Pong* em apenas uma temporada (1975).
-* **Criadores:** Desenvolvido pelo engenheiro Allan Alcorn, sob a direção dos fundadores da Atari Inc., Nolan Bushnell e Ted Dabney.
+**Tags:**
+*   **Year highlight:** 1972
+*   **Year description:** Lançamento nos arcades. Versão para console doméstico em 1975.
+*   **Sales highlight:** +8.000
+*   **Sales description:** Máquinas de arcade até 1974. ~150.000 unidades do Home Pong em uma única temporada (1975).
+*   **Creators highlight:** Allan Alcorn
+*   **Creators description:** Desenvolvido sob direção dos fundadores da Atari Inc., Nolan Bushnell e Ted Dabney.
 
 ---
 

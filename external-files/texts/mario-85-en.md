@@ -3,11 +3,13 @@
 **Description:** 
 A revolutionary platform game that introduced continuous side-scrolling and inertia-based physics, being primarily responsible for rescuing the video game industry from the 1983 crash and introducing interactive digital entertainment into millions of homes around the world.
 
-**Information:**
-*   **Year:** 1985
-*   **Console:** Famicom / Nintendo Entertainment System (NES)
-*   **Sales figures:** Over 40 million copies
-*   **Creators:** Shigeru Miyamoto and Takashi Tezuka
+**Tags:**
+*   **Year highlight:** 1985
+*   **Year description:** Released for Famicom (Japan) and NES (North America).
+*   **Sales highlight:** +40M
+*   **Sales description:** Copies sold, cementing it as one of the best-selling games of all time.
+*   **Creators highlight:** Miyamoto\n& Tezuka
+*   **Creators description:** Directed by Shigeru Miyamoto and Takashi Tezuka at Nintendo R&D4.
 
 ---
 

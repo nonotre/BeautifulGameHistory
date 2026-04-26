@@ -49,7 +49,11 @@ export const pt = {
     howItWorks: 'Como o Jogo Funciona',
     impact: 'Impacto Histórico, Comercial e Social',
     techAdvancements: 'Impactos na Computação e Avanços Tecnológicos',
-    
+    // Info card labels
+    cardLabelYear:     'ANO',
+    cardLabelSales:    'VENDAS',
+    cardLabelCreators: 'CRIADORES',
+
     // Per-game record
     games: {
       pong: {
@@ -59,6 +63,12 @@ export const pt = {
         year: '1972 (Arcade) / 1975 (Console Doméstico)',
         salesVolume: 'Atingiu mais de 8.000 máquinas de arcade em 1974 e aproximadamente 150.000 unidades do Home Pong em apenas uma temporada (1975).',
         creators: 'Desenvolvido pelo engenheiro Allan Alcorn, sob a direção dos fundadores da Atari Inc., Nolan Bushnell e Ted Dabney.',
+        yearHighlight: '1972',
+        yearDescription: 'Lançamento nos arcades. Versão para console doméstico em 1975.',
+        salesHighlight: '+8.000',
+        salesDescription: 'Máquinas de arcade até 1974. ~150.000 unidades do Home Pong em uma única temporada (1975).',
+        creatorsHighlight: 'Allan Alcorn',
+        creatorsDescription: 'Desenvolvido sob direção dos fundadores da Atari Inc., Nolan Bushnell e Ted Dabney.',
         content: [
           '### A História e os Bastidores do Desenvolvimento',
           'A evolução dos jogos eletrônicos possui raízes em experimentos laboratoriais das décadas de 1950 e 1960, destacando-se o Tennis for Two (1958), pelo uso pioneiro de interfaces visuais em osciloscópios, e o Spacewar! (1962), pela complexidade lógica em ambientes computacionais acadêmicos como em seu caso o MIT. Contudo, apesar do pioneirismo técnico desses marcos, o Pong (1972) é adotado como o ponto de partida fundamental desta análise, tendo em vista sua transcendência acadêmica rumo ao mercado dos jogos.',
@@ -82,6 +92,12 @@ export const pt = {
         year: '1980',
         salesVolume: 'Mais de 400.000 gabinetes de arcade vendidos mundialmente (sendo um dos jogos mais rentáveis da história)',
         creators: 'Toru Iwatani',
+        yearHighlight: '1980',
+        yearDescription: 'Lançado nos arcades pela Namco.',
+        salesHighlight: '+400.000',
+        salesDescription: 'Gabinetes de arcade vendidos no mundo todo, um dos jogos mais rentáveis da história.',
+        creatorsHighlight: 'Toru Iwatani',
+        creatorsDescription: 'Desenvolvido na Namco.',
         content: [
           '### História e Bastidores',
           'No final da década de 1970, o mercado de fliperamas era fortemente focado no público masculino e saturado por jogos de tiro espacial violentos, como *Space Invaders*. Buscando expandir esse mercado e atrair o público feminino, Toru Iwatani decidiu criar uma experiência amigável e inofensiva. A inspiração para o design icônico do personagem principal surgiu da imagem de uma pizza com uma fatia faltando e do ideograma japonês para "boca" (*kuchi*). Originalmente, o projeto foi batizado de *Puck-Man*, uma brincadeira com *paku-paku* (a onomatopeia japonesa para o som de mastigar). No entanto, ao ser exportado para os Estados Unidos, o nome foi estrategicamente alterado para *Pac-Man* para evitar que vândalos alterassem a letra "P" para "F" nas máquinas.',
@@ -100,6 +116,12 @@ export const pt = {
         year: '1984',
         salesVolume: 'Mais de 520 milhões de cópias mundialmente (incluindo mídias físicas e downloads móveis).',
         creators: 'Alexey Pajitnov',
+        yearHighlight: '1984',
+        yearDescription: 'Criado no Electronika 60. Popularizado mundialmente via Game Boy e NES.',
+        salesHighlight: '+520M',
+        salesDescription: 'Cópias no mundo todo, incluindo mídias físicas e downloads móveis.',
+        creatorsHighlight: 'Alexey Pajitnov',
+        creatorsDescription: 'Desenvolvido originalmente na Academia Soviética de Ciências. Direitos recuperados em 1996 via The Tetris Company.',
         content: [
           '### História e Bastidores',
           'Criado em 1984 pelo engenheiro soviético Alexey Pajitnov no computador Electronika 60, Tetris nasceu do fascínio de seu criador por quebra-cabeças matemáticos, especificamente os pentaminós. Ao adaptar o conceito para blocos de quatro quadrados, o jogo rapidamente se espalhou como uma febre silenciosa por toda a União Soviética. A transição para o mercado global, no entanto, desencadeou uma das mais complexas batalhas judiciais e de licenciamento da história dos videogames. O conflito envolveu o empresário Robert Stein, a britânica Mirrorsoft, a Nintendo e a agência estatal soviética Elorg, operando sob o rigor da burocracia comunista em plena Guerra Fria. Através de negociações audaciosas conduzidas por Nikolai Belikov e Henk Rogers, a Nintendo garantiu os direitos, pavimentando o caminho para o sucesso estrondoso no console portátil Game Boy. Pajitnov, que emigrou para os Estados Unidos em 1991, apenas conseguiu reaver o controle sobre os direitos autorais de sua obra em 1996, quando fundou a The Tetris Company.',
@@ -118,6 +140,12 @@ export const pt = {
         year: '1985',
         salesVolume: 'Mais de 40 milhões de cópias',
         creators: 'Shigeru Miyamoto e Takashi Tezuka',
+        yearHighlight: '1985',
+        yearDescription: 'Lançado para o Famicom (Japão) e o NES (América do Norte).',
+        salesHighlight: '+40M',
+        salesDescription: 'Cópias vendidas, consolidando-o como um dos jogos mais vendidos de todos os tempos.',
+        creatorsHighlight: 'Miyamoto\n& Tezuka',
+        creatorsDescription: 'Dirigido por Shigeru Miyamoto e Takashi Tezuka na Nintendo R&D4.',
         content: [
           '### A História e os Bastidores',
           'O desenvolvimento de Super Mario Bros. ocorreu em um cenário desafiador para a indústria do entretenimento digital, logo após o grande crash dos videogames de 1983, que retraiu fortemente o mercado norte-americano. Dirigido por Shigeru Miyamoto e Takashi Tezuka, o título foi concebido para ser o ápice das experiências que a equipe teve desenvolvendo jogos anteriores como Excitebike e Kung Fu. Miyamoto imaginava um projeto mais colorido e grandioso. Inicialmente, o conceito não era um jogo de plataforma convencional, mas sim um "jogo atlético" inspirado nos *undōkai* — eventos esportivos escolares japoneses focados em circuitos, saltos e obstáculos. Para protagonizar essa aventura, a Nintendo resgatou o carpinteiro "Jumpman", que já havia feito sucesso em Donkey Kong e no arcade Mario Bros.',
@@ -136,6 +164,12 @@ export const pt = {
         year: '1996',
         salesVolume: 'Aproximadamente 11,91 milhões de unidades originais.',
         creators: 'Shigeru Miyamoto (Desenvolvido pela Nintendo Entertainment Analysis & Development - EAD)',
+        yearHighlight: '1996',
+        yearDescription: 'Título de lançamento do Nintendo 64, lançado junto com Pilotwings 64.',
+        salesHighlight: '~11,91M',
+        salesDescription: 'Unidades originais em cartucho vendidas no mundo todo para o Nintendo 64.',
+        creatorsHighlight: 'Shigeru Miyamoto',
+        creatorsDescription: 'Desenvolvido pela Nintendo Entertainment Analysis & Development (EAD).',
         content: [
           '### História e Bastidores',
           'A ideia de levar o mascote da Nintendo para a terceira dimensão começou a ser concebida pelo produtor e diretor Shigeru Miyamoto ainda em 1993, durante o desenvolvimento de Star Fox. O projeto de Super Mario 64 levou cerca de três anos para ser concluído pela equipe da Nintendo EAD, sendo um ano dedicado exclusivamente ao design e dois anos de programação e trabalho direto. Durante esse período, a equipe passou meses aperfeiçoando os movimentos de Mario em uma sala virtual vazia antes de construir qualquer fase, focando puramente na diversão da movimentação; um dos primeiros testes de física e animação envolveu a captura de um coelho amarelo, que mais tarde foi incluído no jogo como o personagem MIPS. Utilizando o software gráfico de alta performance Nichimen N-World e contando com a trilha sonora imersiva de Koji Kondo, o título foi lançado como o principal jogo de lançamento do Nintendo 64, juntamente com Pilotwings 64.',

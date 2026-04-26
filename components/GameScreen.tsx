@@ -1,6 +1,7 @@
 'use client'
 
 import { Header } from '@/components/Header'
+import { InfoCard } from '@/components/InfoCard'
 import { Paragraphs } from '@/components/Paragraphs'
 import { useDictionary } from '@/lib/i18n/useDictionary'
 import { SEMANTIC_MAP, type GameSlug } from '@/lib/themes'
@@ -172,15 +173,24 @@ export function GameScreen({ slug }: GameScreenProps) {
             </p>
           </div>
 
-          {/* Technical and Market Information (Only if exists) */}
-          {(game as any).salesVolume && (
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              <h2 style={{ fontSize: '1rem', color: 'var(--theme-heading)', textTransform: 'uppercase' }}>{dict.game.technicalInfo}</h2>
-              <ul style={{ fontSize: 'var(--font-size-base)', color: 'var(--theme-text)', lineHeight: 1.8, display: 'flex', flexDirection: 'column', gap: '0.25rem', listStyle: 'none', padding: 0 }}>
-                <li><strong>Year:</strong> {game.year}</li>
-                <li><strong>Sales:</strong> {(game as any).salesVolume}</li>
-                <li><strong>Creators:</strong> {(game as any).creators}</li>
-              </ul>
+          {/* Info Cards (Only if card data exists) */}
+          {(game as any).yearHighlight && (
+            <div style={{ display: 'flex', gap: '0.75rem' }}>
+              <InfoCard
+                label={dict.game.cardLabelYear}
+                highlight={(game as any).yearHighlight}
+                description={(game as any).yearDescription}
+              />
+              <InfoCard
+                label={dict.game.cardLabelSales}
+                highlight={(game as any).salesHighlight}
+                description={(game as any).salesDescription}
+              />
+              <InfoCard
+                label={dict.game.cardLabelCreators}
+                highlight={(game as any).creatorsHighlight}
+                description={(game as any).creatorsDescription}
+              />
             </div>
           )}
 

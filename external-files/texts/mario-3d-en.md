@@ -4,10 +4,12 @@
 A detailed analysis of Super Mario 64, detailing its development process, its fundamental gameplay mechanics, and the profound impact the work had on the video game industry, society, and the advancement of real-time computer graphics.
 
 **Tags:**
-*   **Year:** 1996
-*   **Console:** Nintendo 64
-*   **Sales figures:** Approximately 11.91 million original units.
-*   **Creator:** Shigeru Miyamoto (Developed by Nintendo Entertainment Analysis & Development - EAD)
+*   **Year highlight:** 1996
+*   **Year description:** Nintendo 64 launch title, released alongside Pilotwings 64.
+*   **Sales highlight:** ~11.91M
+*   **Sales description:** Original cartridge units sold worldwide for the Nintendo 64.
+*   **Creators highlight:** Shigeru Miyamoto
+*   **Creators description:** Developed by Nintendo Entertainment Analysis & Development (EAD).
 
 ---
 

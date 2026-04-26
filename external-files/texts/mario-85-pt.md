@@ -3,11 +3,13 @@
 **Descrição:** 
 Um jogo de plataforma revolucionário que introduziu a rolagem lateral contínua e a física baseada em inércia, sendo o principal responsável por resgatar a indústria de videogames da crise de 1983 e introduzir o entretenimento digital interativo em milhões de lares ao redor do mundo.
 
-**Informações:**
-*   **Ano:** 1985
-*   **Console:** Famicom / Nintendo Entertainment System (NES)
-*   **Quantidade de vendas:** Mais de 40 milhões de cópias
-*   **Criadores:** Shigeru Miyamoto e Takashi Tezuka
+**Tags:**
+*   **Year highlight:** 1985
+*   **Year description:** Lançado para o Famicom (Japão) e o NES (América do Norte).
+*   **Sales highlight:** +40M
+*   **Sales description:** Cópias vendidas, consolidando-o como um dos jogos mais vendidos de todos os tempos.
+*   **Creators highlight:** Miyamoto\n& Tezuka
+*   **Creators description:** Dirigido por Shigeru Miyamoto e Takashi Tezuka na Nintendo R&D4.
 
 ---
 

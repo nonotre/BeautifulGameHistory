@@ -5,11 +5,13 @@ Uma visão geral sobre a criação, a mecânica inovadora e o impacto cultural e
 
 ---
 
-### Ficha Técnica (Tags)
-*   **Ano:** 1980
-*   **Console:** Arcade (Fliperama)
-*   **Quantidade de vendas:** Mais de 400.000 gabinetes de arcade vendidos mundialmente (sendo um dos jogos mais rentáveis da história)
-*   **Criador:** Toru Iwatani
+**Tags:**
+*   **Year highlight:** 1980
+*   **Year description:** Lançado nos arcades pela Namco.
+*   **Sales highlight:** +400.000
+*   **Sales description:** Gabinetes de arcade vendidos no mundo todo, um dos jogos mais rentáveis da história.
+*   **Creators highlight:** Toru Iwatani
+*   **Creators description:** Desenvolvido na Namco.
 
 ---
 

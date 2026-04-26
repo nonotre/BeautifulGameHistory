@@ -4,10 +4,12 @@
 Uma síntese sobre a criação, a complexa batalha de direitos autorais, o funcionamento e os profundos impactos tecnológicos e culturais de Tetris, o jogo de origem soviética que revolucionou a indústria do entretenimento e da computação.
 
 **Tags:**
-*   **Ano:** 1984
-*   **Console:** Desenvolvido inicialmente no Electronika 60; popularizado massivamente no Game Boy e no NES.
-*   **Quantidade de vendas:** Mais de 520 milhões de cópias mundialmente (incluindo mídias físicas e downloads móveis).
-*   **Criador:** Alexey Pajitnov
+*   **Year highlight:** 1984
+*   **Year description:** Criado no Electronika 60. Popularizado mundialmente via Game Boy e NES.
+*   **Sales highlight:** +520M
+*   **Sales description:** Cópias no mundo todo, incluindo mídias físicas e downloads móveis.
+*   **Creators highlight:** Alexey Pajitnov
+*   **Creators description:** Desenvolvido originalmente na Academia Soviética de Ciências. Direitos recuperados em 1996 via The Tetris Company.
 
 ---
 
