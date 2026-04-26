@@ -4,11 +4,11 @@
 
 **Tags:**
 *   **Year highlight:** 1972
-*   **Year description:** Lançamento nos arcades. Versão para console doméstico em 1975.
+*   **Year description:** Lançamento nos arcades. Console doméstico em 1975.
 *   **Sales highlight:** +8.000
-*   **Sales description:** Máquinas de arcade até 1974. ~150.000 unidades do Home Pong em uma única temporada (1975).
+*   **Sales description:** Máquinas de arcade até 1974.
 *   **Creators highlight:** Allan Alcorn
-*   **Creators description:** Desenvolvido sob direção dos fundadores da Atari Inc., Nolan Bushnell e Ted Dabney.
+*   **Creators description:** E direção dos fundadores da Atari, Nolan Bushnell e Ted Dabney.
 
 ---
 

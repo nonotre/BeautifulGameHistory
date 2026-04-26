@@ -9,7 +9,7 @@ Uma visão geral sobre a criação, a mecânica inovadora e o impacto cultural e
 *   **Year highlight:** 1980
 *   **Year description:** Lançado nos arcades pela Namco.
 *   **Sales highlight:** +400.000
-*   **Sales description:** Gabinetes de arcade vendidos no mundo todo, um dos jogos mais rentáveis da história.
+*   **Sales description:** Gabinetes de arcade vendidos no mundo todo.
 *   **Creators highlight:** Toru Iwatani
 *   **Creators description:** Desenvolvido na Namco.
 
