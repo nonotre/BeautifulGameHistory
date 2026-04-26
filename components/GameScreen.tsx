@@ -214,24 +214,13 @@ export function GameScreen({ slug }: GameScreenProps) {
             overflow: 'hidden',
           }}
         >
-          {slug === 'pong' ? (
-            <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-              <Image
-                src="/controllers/AtariJoystick.png"
-                alt={dict.game.controllerAlt(game.title)}
-                fill
-                style={{ objectFit: 'contain', objectPosition: 'center' }}
-              />
-            </div>
-          ) : (
-            <div
-              className="placeholder-block"
-              style={{ width: '100%', height: '100%' }}
-              aria-label={dict.game.controllerAlt(game.title)}
-            >
-              {game.title} controller
-            </div>
-          )}
+          <div
+            className="placeholder-block"
+            style={{ width: '100%', height: '100%' }}
+            aria-label={dict.game.controllerAlt(game.title)}
+          >
+            {game.title} controller
+          </div>
         </section>
       </div>
     </main>
