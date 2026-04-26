@@ -113,7 +113,7 @@ export function GameScreen({ slug }: GameScreenProps) {
             >
               {slug === 'pong' ? (
                 <Image
-                  src="/logos/pong.jpg"
+                  src="/logos/pong_darkmode.png"
                   alt={dict.game.logoAlt(game.title)}
                   width={720}
                   height={405}
