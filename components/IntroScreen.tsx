@@ -6,7 +6,8 @@ import { Header } from '@/components/Header'
 import { useNavigationStore } from '@/store/navigationStore'
 import { useDictionary } from '@/lib/i18n/useDictionary'
 
-const YOUTUBE_PLACEHOLDER = 'https://www.youtube.com/embed/dQw4w9WgXcQ'
+const YOUTUBE_VIDEO_ID = 'SXKn4ZgzNW4'
+const YOUTUBE_EMBED_URL = `https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}`
 const COUNTDOWN_SECONDS = 30
 
 /**
@@ -15,8 +16,8 @@ const COUNTDOWN_SECONDS = 30
  *
  * SEE GAMES button is revealed when ANY of:
  * 1. 30 seconds elapse.
- * 2. Video ends naturally (YouTube postMessage event).
- * 3. User pauses the video.
+ * 2. Video ends naturally (YouTube postMessage: onStateChange info=0).
+ * 3. User pauses the video (onStateChange info=2).
  */
 export function IntroScreen() {
   const dict = useDictionary()
@@ -28,8 +29,12 @@ export function IntroScreen() {
   const [showSeeGames, setShowSeeGames] = useState(false)
   const timerRef = useRef<ReturnType<typeof setInterval> | null>(null)
   const iframeRef = useRef<HTMLIFrameElement>(null)
+  const seeGamesBtnRef = useRef<HTMLButtonElement>(null)
+  const revealedRef = useRef(false)
 
   function revealSeeGames() {
+    if (revealedRef.current) return
+    revealedRef.current = true
     setShowSeeGames(true)
     if (timerRef.current) {
       clearInterval(timerRef.current)
@@ -55,13 +60,46 @@ export function IntroScreen() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  /**
+   * After the iframe loads, tell the YouTube player to emit state-change events.
+   * This ensures onStateChange fires even when the user seeks to the end.
+   */
+  function handleIframeLoad() {
+    iframeRef.current?.contentWindow?.postMessage(
+      JSON.stringify({ event: 'listening', id: 1, channel: 'widget' }),
+      'https://www.youtube.com',
+    )
+  }
+
   // YouTube IFrame API via postMessage.
   useEffect(() => {
     function handleMessage(event: MessageEvent) {
       if (event.origin !== 'https://www.youtube.com') return
       try {
         const data = JSON.parse(event.data as string)
-        // info.playerState: 0 = ended, 2 = paused
+
+        // After the player is ready, subscribe to onStateChange events.
+        if (data.event === 'onReady') {
+          iframeRef.current?.contentWindow?.postMessage(
+            JSON.stringify({
+              event: 'command',
+              func: 'addEventListener',
+              args: ['onStateChange'],
+              id: 1,
+              channel: 'widget',
+            }),
+            'https://www.youtube.com',
+          )
+        }
+
+        // onStateChange: info is the state number directly (0=ended, 2=paused).
+        if (data.event === 'onStateChange') {
+          if (data.info === 0 || data.info === 2) {
+            revealSeeGames()
+          }
+        }
+
+        // infoDelivery: state is nested under info.playerState.
         if (data.event === 'infoDelivery' && data.info?.playerState !== undefined) {
           if (data.info.playerState === 0 || data.info.playerState === 2) {
             revealSeeGames()
@@ -74,10 +112,19 @@ export function IntroScreen() {
 
     window.addEventListener('message', handleMessage)
     return () => window.removeEventListener('message', handleMessage)
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  function handleSeeGames() {
-    // Decision I, Option A: navigate to / with games submenu active.
+  /** Flash animation then navigate to games. */
+  async function handleSeeGames() {
+    const el = seeGamesBtnRef.current
+    if (el) {
+      el.classList.add('option-btn--flashing')
+      await new Promise<void>((resolve) => {
+        el.addEventListener('animationend', () => resolve(), { once: true })
+      })
+      el.classList.remove('option-btn--flashing')
+    }
     pushRoute('/intro')
     openGamesSubmenu()
     router.push('/')
@@ -92,7 +139,7 @@ export function IntroScreen() {
       }}
     >
       <div className="column" style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
-        <Header hasNext nextHref="/game/game-1" />
+        <Header hasNext nextHref="/game/pong" />
 
         <div
           style={{
@@ -117,10 +164,11 @@ export function IntroScreen() {
             <iframe
               ref={iframeRef}
               id="intro-youtube-player"
-              src={`${YOUTUBE_PLACEHOLDER}?autoplay=1&enablejsapi=1`}
+              src={`${YOUTUBE_EMBED_URL}?autoplay=1&enablejsapi=1`}
               title="Introduction video"
               allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
               allowFullScreen
+              onLoad={handleIframeLoad}
               style={{
                 position: 'absolute',
                 inset: 0,
@@ -131,7 +179,7 @@ export function IntroScreen() {
             />
           </div>
 
-          {/* Countdown or SEE GAMES */}
+          {/* Countdown */}
           {!showSeeGames && (
             <p
               style={{
@@ -144,10 +192,13 @@ export function IntroScreen() {
             </p>
           )}
 
+          {/* SEE GAMES — same style/animation as back & next buttons */}
           {showSeeGames && (
             <button
+              ref={seeGamesBtnRef}
               id="intro-see-games-btn"
-              className="btn"
+              className="option-btn"
+              style={{ width: 'auto', color: 'var(--theme-btn)' }}
               onClick={handleSeeGames}
             >
               {dict.intro.seeGames}
