@@ -23,6 +23,7 @@
   --color-text: #ededed;
   --color-muted: #888888;
   --color-accent: #ffffff;
+  --focus-ring-color: #ffffff;
 
   /*
    * White + black blend tokens — actual RGB values, no opacity tricks.
@@ -135,6 +136,15 @@ h6 {
   font-family: var(--font-heading), monospace;
 }
 
+/* ── Global Focus Ring ────────────────────────────────────────────── */
+button:focus-visible,
+a:focus-visible,
+[role="button"]:focus-visible,
+[tabindex]:not([tabindex="-1"]):focus-visible {
+  outline: 4px solid var(--focus-ring-color, #ffffff) !important;
+  outline-offset: 4px !important;
+}
+
 /* ── Central column layout ─────────────────────────────────────────── */
 .column {
   width: 100%;
@@ -164,11 +174,9 @@ h6 {
   white-space: nowrap;
 }
 
-.btn:hover,
-.btn:focus-visible {
+.btn:hover {
   background: var(--color-surface);
   border-color: var(--color-accent);
-  outline: none;
 }
 
 .btn:active {
@@ -179,8 +187,7 @@ h6 {
   border-color: transparent;
 }
 
-.btn--ghost:hover,
-.btn--ghost:focus-visible {
+.btn--ghost:hover {
   border-color: var(--color-border);
 }
 
@@ -209,11 +216,6 @@ h6 {
 
 .option-btn:hover {
   color: var(--theme-btn-hover, var(--color-white-black-20));
-}
-
-.option-btn:focus-visible {
-  outline: 2px solid var(--theme-btn-hover, var(--color-white-black-20));
-  outline-offset: 4px;
 }
 
 /*

@@ -36,6 +36,8 @@ export const metadata: Metadata = {
   description: 'An interactive history of the most revolutionary video games.',
 }
 
+import { KeyboardNavigation } from '@/components/KeyboardNavigation'
+
 export default function RootLayout({
   children,
 }: {
@@ -43,7 +45,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={cn(silkscreen.variable, vt323.variable, "font-sans", geist.variable, "dark")}>
-      <body>{children}</body>
+      <body>
+        <KeyboardNavigation />
+        {children}
+      </body>
     </html>
   )
 }

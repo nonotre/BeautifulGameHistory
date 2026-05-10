@@ -69,6 +69,7 @@ export function GameScreen({ slug }: GameScreenProps) {
           '--theme-heading':  theme.heading,
           '--theme-btn':      theme.btn,
           '--theme-btn-hover': theme.btnHover,
+          '--focus-ring-color': theme.border,
           backgroundColor:   theme.bg,
         } as React.CSSProperties
       }
