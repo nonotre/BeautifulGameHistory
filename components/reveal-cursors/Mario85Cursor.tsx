@@ -8,7 +8,7 @@ export function Mario85Cursor({ pieceHeight }: CursorProps) {
       src="/animations/green_shell_mario85.png"
       alt=""
       aria-hidden="true"
-      style={{ display: 'block', height: pieceHeight, width: 'auto' }}
+      style={{ display: 'block', height: 'var(--piece-height)', width: 'auto' }}
     />
   )
 }

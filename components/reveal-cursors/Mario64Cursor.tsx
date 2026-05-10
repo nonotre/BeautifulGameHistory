@@ -8,7 +8,7 @@ export function Mario64Cursor({ pieceHeight }: CursorProps) {
       src="/animations/hat-mario64.png"
       alt=""
       aria-hidden="true"
-      style={{ display: 'block', height: pieceHeight, width: 'auto' }}
+      style={{ display: 'block', height: 'var(--piece-height)', width: 'auto' }}
     />
   )
 }

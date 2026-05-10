@@ -38,20 +38,26 @@ interface CursorConfig {
 }
 
 const CURSOR_CONFIG: Partial<Record<GameSlug, CursorConfig>> = {
-  'pong': { 
-    heightScale: 2, 
-    aspectRatio: 1.5, 
+  'pong': {
+    heightScale: 2,
+    aspectRatio: 1.5,
     // overlap by ~10% so the right paddle is over the new characters
-    overlapRatio: 0.1 
+    overlapRatio: 0.1
   },
-  'mario-85': { heightScale: 3, overlapRatio: 0.6 },
-  'mario-64': { heightScale: 3, overlapRatio: 0.6 },
-  'tetris': { 
-    heightScale: 1, 
-    aspectRatio: 31 / 7, 
+  'mario-85': {
+    heightScale: 1.8,
+    overlapRatio: 0.6
+  },
+  'mario-64': {
+    heightScale: 2,
+    overlapRatio: 0.6
+  },
+  'tetris': {
+    heightScale: 1,
+    aspectRatio: 31 / 7,
     // overlap by 60% of ONE block. Since total width is 31/7 blocks,
     // the ratio relative to total width is 0.6 / (31/7).
-    overlapRatio: 0.6 / (31 / 7) 
+    overlapRatio: 0.6 / (31 / 7)
   },
   'pac-man': {
     heightScale: 1,
@@ -245,7 +251,7 @@ export function AnimatedContent({ content, gameSlug, scrollContainerRef }: Anima
       const config = getCursorConfig(gameSlug)
       const piece = pieceRef.current
       if (!piece) return
-      
+
       const pieceHeight = pieceHeightRef.current
       const pieceWidth = pieceHeight * spriteAspectRatioRef.current
 
@@ -256,12 +262,12 @@ export function AnimatedContent({ content, gameSlug, scrollContainerRef }: Anima
 
       piece.style.left = `${spriteX}px`
       piece.style.top = `${spriteY}px`
-      
+
       // Mask the cursor dynamically at the left edge of the container (x=0)
       // so trailing blocks smoothly "enter" the column instead of popping in.
       const clipLeft = Math.max(0, -spriteX)
       piece.style.clipPath = `inset(-100% -100% -100% ${clipLeft}px)`
-      
+
       // Update progress variable for complex cursors
       piece.style.setProperty('--cursor-progress', progress.toString())
       piece.style.setProperty('--cursor-x', `${spriteX}px`)
@@ -284,7 +290,7 @@ export function AnimatedContent({ content, gameSlug, scrollContainerRef }: Anima
 
     const scRect = sc.getBoundingClientRect()
     const clones = Array.from(container.querySelectorAll<HTMLElement>('.reveal-piece-clone'))
-    
+
     let activeClone: HTMLElement | null = null
     let minTop = Infinity
 
@@ -306,7 +312,7 @@ export function AnimatedContent({ content, gameSlug, scrollContainerRef }: Anima
         clone.classList.remove('pacman-active')
       }
     })
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gameSlug])
 
   // ── RAF tick ──────────────────────────────────────────────────────────
@@ -334,7 +340,7 @@ export function AnimatedContent({ content, gameSlug, scrollContainerRef }: Anima
     if (line.isHeading) {
       // ── Heading: wall-clock synchronized reveal ──────────────────────
       const chars = line.chars
-      
+
       if (charIdxInLine.current === 0) {
         paraLineCount.current = 0 // reset paragraph acceleration
         startHeadingCursor(line, now)
@@ -354,7 +360,7 @@ export function AnimatedContent({ content, gameSlug, scrollContainerRef }: Anima
 
       // Finish this line only when both chars are revealed AND the cursor has reached the end
       if (charIdxInLine.current >= chars.length && elapsed >= headingTotalDuration.current) {
-        
+
         // Clone the cursor and leave it behind permanently!
         if (SpriteCursor && pieceRef.current) {
           const clone = pieceRef.current.cloneNode(true) as HTMLElement
@@ -378,7 +384,7 @@ export function AnimatedContent({ content, gameSlug, scrollContainerRef }: Anima
           }
 
           pieceRef.current.style.display = 'none'
-          
+
           updateActiveClone()
         } else if (!SpriteCursor && cursorRef.current) {
           const clone = cursorRef.current.cloneNode(true) as HTMLElement
@@ -390,7 +396,7 @@ export function AnimatedContent({ content, gameSlug, scrollContainerRef }: Anima
         headingCursorActive.current = false
         nextLineIdx.current++
         charIdxInLine.current = 0
-        
+
         if (nextLineIdx.current < lines.length && !isLineVisible(lines[nextLineIdx.current])) {
           running.current = false
         }
@@ -405,7 +411,7 @@ export function AnimatedContent({ content, gameSlug, scrollContainerRef }: Anima
         for (const ch of chars) {
           ch.style.color = 'inherit'
         }
-        
+
         paraLineCount.current++
         nextLineIdx.current++
         charIdxInLine.current = 0
@@ -429,7 +435,7 @@ export function AnimatedContent({ content, gameSlug, scrollContainerRef }: Anima
     if (running.current) {
       rafId.current = requestAnimationFrame(tick)
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   useEffect(() => {
@@ -452,7 +458,7 @@ export function AnimatedContent({ content, gameSlug, scrollContainerRef }: Anima
       }
       img.src = url
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [gameSlug])
 
   /** Start the loop only if stopped and the next unrevealed line is visible. */
@@ -540,7 +546,7 @@ export function AnimatedContent({ content, gameSlug, scrollContainerRef }: Anima
         running.current = false
         charIdxInLine.current = 0
         paraLineCount.current = 0
-        
+
         // Remove all clones to avoid messy layout on resize
         const clones = containerRef.current?.querySelectorAll('.reveal-piece-clone, .reveal-cursor-clone')
         clones?.forEach(c => c.remove())
@@ -562,7 +568,7 @@ export function AnimatedContent({ content, gameSlug, scrollContainerRef }: Anima
         clearTimeout(resizeTimer)
       }
     })
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // ── Render ────────────────────────────────────────────────────────────
