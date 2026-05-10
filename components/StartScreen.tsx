@@ -6,6 +6,7 @@ import { useLanguageStore } from '@/store/languageStore'
 import { useDictionary } from '@/lib/i18n/useDictionary'
 import { NavigationLink } from '@/components/NavigationLink'
 import { Switch } from '@/components/ui/8bit/switch'
+import { playHover, playConfirm } from '@/lib/sounds'
 
 type MenuView = 'main' | 'games' | 'options'
 
@@ -74,6 +75,7 @@ export function StartScreen() {
 
   /** Flash-then-switch to the games submenu (no navigation). */
   async function handleGamesClick() {
+    playConfirm()
     const el = gamesRef.current
     if (!el) return
     el.classList.add('option-btn--flashing')
@@ -86,6 +88,7 @@ export function StartScreen() {
 
   /** Flash-then-switch to the options submenu (no navigation). */
   async function handleOptionsClick() {
+    playConfirm()
     const el = optionsRef.current
     if (!el) return
     el.classList.add('option-btn--flashing')
@@ -98,6 +101,7 @@ export function StartScreen() {
 
   /** Flash-then-go-back to main view (from games). */
   async function handleBackGamesClick() {
+    playConfirm()
     const el = backGamesRef.current
     if (!el) return
     el.classList.add('option-btn--flashing')
@@ -110,6 +114,7 @@ export function StartScreen() {
 
   /** Flash-then-go-back to main view (from options). */
   async function handleBackOptionsClick() {
+    playConfirm()
     const el = backOptionsRef.current
     if (!el) return
     el.classList.add('option-btn--flashing')
@@ -158,6 +163,7 @@ export function StartScreen() {
                 ref={gamesRef}
                 className="option-btn"
                 onClick={handleGamesClick}
+                onMouseEnter={playHover}
               >
                 {dict.start.games}
               </button>
@@ -180,6 +186,7 @@ export function StartScreen() {
                 ref={optionsRef}
                 className="option-btn"
                 onClick={handleOptionsClick}
+                onMouseEnter={playHover}
               >
                 {dict.start.options}
               </button>
@@ -195,6 +202,7 @@ export function StartScreen() {
                 className="option-btn"
                 style={{ alignSelf: 'flex-start', width: 'auto' }}
                 onClick={handleBackGamesClick}
+                onMouseEnter={playHover}
               >
                 {dict.nav.back}
               </button>
@@ -239,6 +247,7 @@ export function StartScreen() {
                 className="option-btn"
                 style={{ alignSelf: 'flex-start', width: 'auto' }}
                 onClick={handleBackOptionsClick}
+                onMouseEnter={playHover}
               >
                 {dict.nav.back}
               </button>

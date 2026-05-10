@@ -63,11 +63,12 @@ export function GameScreen({ slug }: GameScreenProps) {
           // ── Semantic CSS custom properties ────────────────────────────────
           // These cascade to all descendants; components read var(--theme-*)
           // directly without receiving theme props.
-          '--theme-bg':      theme.bg,
-          '--theme-border':  theme.border,
-          '--theme-text':    theme.text,
-          '--theme-heading': theme.heading,
-          '--theme-btn':     theme.btn,
+          '--theme-bg':       theme.bg,
+          '--theme-border':   theme.border,
+          '--theme-text':     theme.text,
+          '--theme-heading':  theme.heading,
+          '--theme-btn':      theme.btn,
+          '--theme-btn-hover': theme.btnHover,
           backgroundColor:   theme.bg,
         } as React.CSSProperties
       }

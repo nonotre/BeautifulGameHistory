@@ -199,7 +199,7 @@ h6 {
   font-family: var(--font-heading), monospace;
   font-size: var(--font-size-option);
   font-weight: 400;
-  color: #ffffff;
+  color: var(--theme-btn, #ffffff);
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -208,11 +208,11 @@ h6 {
 }
 
 .option-btn:hover {
-  color: var(--color-white-black-20);
+  color: var(--theme-btn-hover, var(--color-white-black-20));
 }
 
 .option-btn:focus-visible {
-  outline: 2px solid var(--color-white-black-20);
+  outline: 2px solid var(--theme-btn-hover, var(--color-white-black-20));
   outline-offset: 4px;
 }
 

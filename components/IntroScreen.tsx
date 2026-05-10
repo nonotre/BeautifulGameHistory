@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation'
 import { Header } from '@/components/Header'
 import { useNavigationStore } from '@/store/navigationStore'
 import { useDictionary } from '@/lib/i18n/useDictionary'
+import { playHover, playConfirm } from '@/lib/sounds'
 
 const YOUTUBE_VIDEO_ID = 'SXKn4ZgzNW4'
 const YOUTUBE_EMBED_URL = `https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}`
@@ -92,16 +93,16 @@ export function IntroScreen() {
           )
         }
 
-        // onStateChange: info is the state number directly (0=ended, 2=paused).
+        // onStateChange: info is the state number directly (0=ended).
         if (data.event === 'onStateChange') {
-          if (data.info === 0 || data.info === 2) {
+          if (data.info === 0) {
             revealSeeGames()
           }
         }
 
         // infoDelivery: state is nested under info.playerState.
         if (data.event === 'infoDelivery' && data.info?.playerState !== undefined) {
-          if (data.info.playerState === 0 || data.info.playerState === 2) {
+          if (data.info.playerState === 0) {
             revealSeeGames()
           }
         }
@@ -117,6 +118,7 @@ export function IntroScreen() {
 
   /** Flash animation then navigate to games. */
   async function handleSeeGames() {
+    playConfirm()
     const el = seeGamesBtnRef.current
     if (el) {
       el.classList.add('option-btn--flashing')
@@ -200,6 +202,7 @@ export function IntroScreen() {
               className="option-btn"
               style={{ width: 'auto', color: 'var(--theme-btn)' }}
               onClick={handleSeeGames}
+              onMouseEnter={playHover}
             >
               {dict.intro.seeGames}
             </button>

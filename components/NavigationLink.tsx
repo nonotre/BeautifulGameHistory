@@ -3,6 +3,7 @@
 import { forwardRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { useNavigationStore } from '@/store/navigationStore'
+import { playHover, playConfirm } from '@/lib/sounds'
 
 interface NavigationLinkProps {
   /** Href to navigate to after pushing current route to the store. */
@@ -41,6 +42,7 @@ export const NavigationLink = forwardRef<HTMLButtonElement, NavigationLinkProps>
     const pushRoute = useNavigationStore((s) => s.pushRoute)
 
     async function handleClick() {
+      playConfirm()
       if (onBeforeNavigate) {
         await onBeforeNavigate()
       }
@@ -49,7 +51,7 @@ export const NavigationLink = forwardRef<HTMLButtonElement, NavigationLinkProps>
     }
 
     return (
-      <button ref={ref} id={id} className={className} style={style} onClick={handleClick}>
+      <button ref={ref} id={id} className={className} style={style} onClick={handleClick} onMouseEnter={playHover}>
         {children}
       </button>
     )

@@ -4,6 +4,7 @@ import { useRef } from 'react'
 import { useRouter } from 'next/navigation'
 import { useNavigationStore } from '@/store/navigationStore'
 import { useDictionary } from '@/lib/i18n/useDictionary'
+import { playHover, playConfirm } from '@/lib/sounds'
 
 interface HeaderProps {
   /** Whether to render the NEXT button. */
@@ -41,6 +42,7 @@ export function Header({ hasNext = false, nextHref }: HeaderProps) {
   }
 
   async function handleBack() {
+    playConfirm()
     await flash(backRef)
     const destination = popRoute()
     if (destination) {
@@ -52,6 +54,7 @@ export function Header({ hasNext = false, nextHref }: HeaderProps) {
 
   async function handleNext() {
     if (!nextHref) return
+    playConfirm()
     await flash(nextRef)
     const currentPath = window.location.pathname
     pushRoute(currentPath)
@@ -73,9 +76,10 @@ export function Header({ hasNext = false, nextHref }: HeaderProps) {
         ref={backRef}
         id="header-back-btn"
         className="option-btn"
-        // Reads --theme-btn injected by GameScreen on the parent <main>.
-        style={{ width: 'auto', textAlign: 'left', color: 'var(--theme-btn)' }}
+        // color is set by .option-btn via var(--theme-btn) — no inline override
+        style={{ width: 'auto', textAlign: 'left' }}
         onClick={handleBack}
+        onMouseEnter={playHover}
         aria-label="Go back"
       >
         {dict.nav.back}
@@ -86,9 +90,10 @@ export function Header({ hasNext = false, nextHref }: HeaderProps) {
           ref={nextRef}
           id="header-next-btn"
           className="option-btn"
-          // Reads --theme-btn injected by GameScreen on the parent <main>.
-          style={{ width: 'auto', textAlign: 'right', color: 'var(--theme-btn)' }}
+          // color is set by .option-btn via var(--theme-btn) — no inline override
+          style={{ width: 'auto', textAlign: 'right' }}
           onClick={handleNext}
+          onMouseEnter={playHover}
           aria-label="Go to next page"
         >
           {dict.nav.next}

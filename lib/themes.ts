@@ -18,6 +18,8 @@ export const PRIMITIVES: Record<GameSlug, Record<string, string>> = {
   pong: {
     '--pong-white': '#FFFFFF',
     '--pong-black': '#000000',
+    // btn hover — #FFFFFF mixed with 40% black (channels × 0.6)
+    '--pong-white-hover': '#999999',
   },
   'pac-man': {
     '--pacman-cream':   '#FFF8D6',
@@ -28,6 +30,8 @@ export const PRIMITIVES: Record<GameSlug, Record<string, string>> = {
     '--pacman-cyan':    '#46BFEE',
     '--pacman-red':     '#D03E19',
     '--pacman-orange':  '#DB851C',
+    // btn hover — #FDFF00 mixed with 40% black (channels × 0.6)
+    '--pacman-yellow-hover': '#989900',
   },
   tetris: {
     '--tetris-light-green': '#DBE8D5',
@@ -35,12 +39,16 @@ export const PRIMITIVES: Record<GameSlug, Record<string, string>> = {
     '--tetris-green':       '#9BBC0F',
     '--tetris-olive':       '#8BAC0F',
     '--tetris-forest':      '#306230',
+    // btn hover — #9BBC0F mixed with 40% black (channels × 0.6)
+    '--tetris-green-hover': '#5D7109',
   },
   'mario-85': {
     '--mario85-peach':  '#FFDDC9',
     '--mario85-black':  '#020100',
     '--mario85-orange': '#DE5918',
     '--mario85-red':    '#F83612',
+    // btn hover — #F83612 mixed with 40% black (channels × 0.6)
+    '--mario85-red-hover': '#95200B',
   },
   'mario-64': {
     '--mario64-lavender': '#E1E2FF',
@@ -48,6 +56,8 @@ export const PRIMITIVES: Record<GameSlug, Record<string, string>> = {
     '--mario64-red':      '#FE0002',
     '--mario64-blue':     '#0104F3',
     '--mario64-yellow':   '#FFE941',
+    // btn hover — #FFE941 mixed with 40% black (channels × 0.6)
+    '--mario64-yellow-hover': '#998C27',
   },
 }
 
@@ -69,6 +79,8 @@ export type SemanticTheme = {
   text:    string
   heading: string
   btn:     string
+  /** Button hover color — btn color mixed with 40% black. */
+  btnHover: string
 }
 
 /** Semantic values per game — each field references a PRIMITIVES entry. */
@@ -79,6 +91,7 @@ export const SEMANTIC_MAP: Record<GameSlug, SemanticTheme> = {
     text:    PRIMITIVES.pong['--pong-white'],
     heading: PRIMITIVES.pong['--pong-white'],
     btn:     PRIMITIVES.pong['--pong-white'],
+    btnHover: PRIMITIVES.pong['--pong-white-hover'],
   },
   'pac-man': {
     bg:      PRIMITIVES['pac-man']['--pacman-black'],
@@ -86,6 +99,7 @@ export const SEMANTIC_MAP: Record<GameSlug, SemanticTheme> = {
     text:    PRIMITIVES['pac-man']['--pacman-cream'],
     heading: PRIMITIVES['pac-man']['--pacman-yellow'],
     btn:     PRIMITIVES['pac-man']['--pacman-yellow'],
+    btnHover: PRIMITIVES['pac-man']['--pacman-yellow-hover'],
   },
   tetris: {
     bg:      PRIMITIVES.tetris['--tetris-dark-green'],
@@ -93,6 +107,7 @@ export const SEMANTIC_MAP: Record<GameSlug, SemanticTheme> = {
     text:    PRIMITIVES.tetris['--tetris-light-green'],
     heading: PRIMITIVES.tetris['--tetris-green'],
     btn:     PRIMITIVES.tetris['--tetris-green'],
+    btnHover: PRIMITIVES.tetris['--tetris-green-hover'],
   },
   'mario-85': {
     bg:      PRIMITIVES['mario-85']['--mario85-black'],
@@ -100,6 +115,7 @@ export const SEMANTIC_MAP: Record<GameSlug, SemanticTheme> = {
     text:    PRIMITIVES['mario-85']['--mario85-peach'],
     heading: PRIMITIVES['mario-85']['--mario85-orange'],
     btn:     PRIMITIVES['mario-85']['--mario85-red'],
+    btnHover: PRIMITIVES['mario-85']['--mario85-red-hover'],
   },
   'mario-64': {
     bg:      PRIMITIVES['mario-64']['--mario64-navy'],
@@ -107,5 +123,6 @@ export const SEMANTIC_MAP: Record<GameSlug, SemanticTheme> = {
     text:    PRIMITIVES['mario-64']['--mario64-lavender'],
     heading: PRIMITIVES['mario-64']['--mario64-red'],
     btn:     PRIMITIVES['mario-64']['--mario64-yellow'],
+    btnHover: PRIMITIVES['mario-64']['--mario64-yellow-hover'],
   },
 }
