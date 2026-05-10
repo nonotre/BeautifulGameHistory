@@ -101,6 +101,7 @@ export const AnimatedBlock = forwardRef<HTMLDivElement, AnimatedBlockProps>(
             key={`${runIdx}-${charIdx}`}
             data-reveal-char
             data-block-id={blockId}
+            {...(isHeading ? { 'data-heading-char': '' } : {})}
             ref={captureSpan}
             style={charSpanStyle}
           >
