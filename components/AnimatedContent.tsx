@@ -70,8 +70,8 @@ const CURSOR_CONFIG: Partial<Record<GameSlug, CursorConfig>> = {
   },
 }
 
-function getCursorConfig(slug: GameSlug | null | undefined): CursorConfig {
-  if (!slug) return { heightScale: 1, overlapRatio: 0.6 }
+function getCursorConfig(slug: GameSlug | 'credits' | null | undefined): CursorConfig {
+  if (!slug || slug === 'credits') return { heightScale: 1, overlapRatio: 0.6 }
   return CURSOR_CONFIG[slug] || { heightScale: 1, overlapRatio: 0.6 }
 }
 
@@ -92,7 +92,7 @@ interface VisualLine {
 
 interface AnimatedContentProps {
   content: readonly string[]
-  gameSlug: GameSlug
+  gameSlug: GameSlug | 'credits'
   /**
    * Ref to the scrollable section — used as IntersectionObserver root and
    * scroll event target so the engine reacts to the correct viewport.
@@ -148,7 +148,7 @@ export function AnimatedContent({ content, gameSlug, scrollContainerRef }: Anima
   const spriteAspectRatioRef = useRef(1)
 
   // Determine whether this game uses a sprite cursor.
-  const SpriteCursor = CURSOR_MAP[gameSlug] ?? null
+  const SpriteCursor = gameSlug !== 'credits' ? (CURSOR_MAP[gameSlug] ?? null) : null
 
   // ── Helpers ───────────────────────────────────────────────────────────
 
@@ -446,7 +446,7 @@ export function AnimatedContent({ content, gameSlug, scrollContainerRef }: Anima
       spriteAspectRatioRef.current = 1
     }
 
-    const url = SPRITE_URL_MAP[gameSlug]
+    const url = gameSlug !== 'credits' ? SPRITE_URL_MAP[gameSlug] : undefined
     if (!url) return
 
     if (!config.aspectRatio) {
@@ -597,7 +597,7 @@ export function AnimatedContent({ content, gameSlug, scrollContainerRef }: Anima
         >
           <SpriteCursor pieceHeight={pieceHeightRef.current || 20} />
         </div>
-      ) : (
+      ) : gameSlug !== 'credits' ? (
         /* Blinking cursor — absolutely positioned, moved by JS */
         <span
           ref={cursorRef}
@@ -607,7 +607,7 @@ export function AnimatedContent({ content, gameSlug, scrollContainerRef }: Anima
         >
           |
         </span>
-      )}
+      ) : null}
     </div>
   )
 }

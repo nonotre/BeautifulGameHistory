@@ -1,0 +1,5 @@
+### Sobre o projeto
+
+Este projeto foi desenvolvido em colaboração com o Museu de Computação do ICMC/USP (https://mc.icmc.usp.br/), com o propósito de aproximar o público geral do fascinante universo da tecnologia. Através de um website interativo, convidamos a comunidade a explorar a história dos videogames por meio de cinco grandes marcos: Pong, Pac-Man, Tetris, Super Mario Bros. (1985) e Super Mario 64. Cada um desses títulos foi selecionado para ilustrar as verdadeiras revoluções tecnológicas e computacionais de suas respectivas épocas, mostrando como desafios de hardware e software foram superados para dar vida a esses clássicos.
+
+O objetivo central desta iniciativa foi estender o conhecimento sobre computação e sociedade para além dos muros da universidade, traduzindo conceitos complexos em uma linguagem visual e interativa que qualquer pessoa pudesse consumir livremente. Ao destacar o profundo impacto cultural e social que esses jogos exerceram no mundo, buscamos democratizar o acesso à ciência e inspirar novas gerações. Agradecemos ao Museu do ICMC e a toda a equipe envolvida na criação deste espaço de descoberta e aprendizado digital.

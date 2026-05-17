@@ -190,10 +190,83 @@ export const en = {
   credits: {
     pageTitle: 'Credits',
     teamImageAlt: 'Development team photo placeholder',
-    placeholderText: [
-      'Beautiful Game History was created by a team of three passionate developers.',
-      'The project is a love letter to the games that shaped our childhood and our profession.',
-      'Thank you for playing.',
+    memberPhotoAlt: (name: string) => `Photo of ${name}`,
+    // Team carousel roles — one string per member
+    team: {
+      deizielle: 'research, writing, content, image & video',
+      joao:      'art direction, ux/ui, design, front end, video editing',
+      pedro:     'script, recording & presentation',
+    },
+    aboutHeading: 'About the project',
+    aboutText: [
+      'This project was developed in collaboration with the Computer Museum of ICMC/USP (https://mc.icmc.usp.br/), with the purpose of bringing the general public closer to the fascinating universe of technology. Through an interactive website, we invite the community to explore the history of video games through five major milestones: Pong, Pac-Man, Tetris, Super Mario Bros. (1985), and Super Mario 64. Each of these titles was selected to illustrate the true technological and computing revolutions of their respective eras, showing how hardware and software challenges were overcome to bring these classics to life.',
+      'The central objective of this initiative was to extend knowledge about computing and society beyond the university walls, translating complex concepts into a visual and interactive language that anyone could freely consume. By highlighting the deep cultural and social impact that these games had on the world, we seek to democratize access to science and inspire new generations. We thank the ICMC Museum and the entire team involved in the creation of this space for digital discovery and learning.'
+    ],
+    linksHeading: 'References',
+    links: [
+      {
+        game: 'Pong',
+        items: [
+          { href: 'https://www.pong-story.com/arcade.htm', label: 'https://www.pong-story.com/arcade.htm' },
+          { href: 'https://youtu.be/6QYNlPLzj90?si=CbMrhNg62xd-fOQW', label: 'https://youtu.be/6QYNlPLzj90?si=CbMrhNg62xd-fOQW' },
+          { href: 'https://assets.mitmuseum.mit.edu/iiifimg3/69578643/full/!800,800/0/default.jpg?response-content-disposition=attachment%3B%20filename%3D69578643.jpg', label: 'https://assets.mitmuseum.mit.edu/iiifimg3/69578643/full/!800,800/0/default.jpg' },
+          { href: 'https://youtu.be/fiShX2pTz9A?si=3AZbPRLeGHiGzwp0', label: 'https://youtu.be/fiShX2pTz9A?si=3AZbPRLeGHiGzwp0' },
+          { href: 'https://upload.wikimedia.org/wikipedia/commons/3/32/Signed_Pong_Cabinet.jpg', label: 'https://upload.wikimedia.org/wikipedia/commons/3/32/Signed_Pong_Cabinet.jpg' },
+        ],
+      },
+      {
+        game: 'Pac-Man',
+        items: [
+          { href: 'https://en-wikipedia-org.translate.goog/wiki/Pac-Man?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=tc', label: 'https://en-wikipedia-org.translate.goog/wiki/Pac-Man' },
+          { href: 'https://pacman-fandom-com.translate.goog/wiki/Map_256_Glitch?_x_tr_sl=en&_x_tr_tl=pt&_x_tr_hl=pt&_x_tr_pto=tc', label: 'https://pacman-fandom-com.translate.goog/wiki/Map_256_Glitch' },
+          { href: 'https://jovemnerd.com.br/noticias/games/pac-man-inteligencia-artificial-entenda', label: 'https://jovemnerd.com.br/noticias/games/pac-man-inteligencia-artificial-entenda' },
+          { href: 'https://youtu.be/-CbyAk3Sn9I?si=7VU1DCFNqwsCD4rE', label: 'https://youtu.be/-CbyAk3Sn9I?si=7VU1DCFNqwsCD4rE' },
+          { href: 'https://static.wikia.nocookie.net/villains/images/3/3b/Pacman_ghosts.png/revision/latest?cb=20251031210849', label: 'https://static.wikia.nocookie.net/villains/images/3/3b/Pacman_ghosts.png' },
+          { href: 'https://static.wikia.nocookie.net/pacman/images/8/8d/Pacman-merch-top.jpg/revision/latest?cb=20240531165728', label: 'https://static.wikia.nocookie.net/pacman/images/8/8d/Pacman-merch-top.jpg' },
+        ],
+      },
+      {
+        game: 'Tetris',
+        items: [
+          { href: 'https://asmetro.org.br/portalsn/2023/05/01/tetris-a-dramatica-historia-de-como-o-maior-jogo-de-todos-os-tempos-foi-criado-e-deixou-a-uniao-sovietica/', label: 'https://asmetro.org.br/portalsn/2023/05/01/tetris-a-dramatica-historia…' },
+          { href: 'https://tetris.com/news/the-history-of-tetris', label: 'https://tetris.com/news/the-history-of-tetris' },
+          { href: 'https://pt.wikipedia.org/wiki/Tetris', label: 'https://pt.wikipedia.org/wiki/Tetris' },
+          { href: 'https://www.historiadomundo.com.br/idade-contemporanea/origem-do-tetris.htm', label: 'https://www.historiadomundo.com.br/idade-contemporanea/origem-do-tetris.htm' },
+          { href: 'https://www.bbc.com/portuguese/articles/cekdg02gxv0o', label: 'https://www.bbc.com/portuguese/articles/cekdg02gxv0o' },
+          { href: 'https://www.psichi.org/blogpost/987366/511159/Stacking-Up-Thoughts-The-Tetris-Effect-and-Our-Brains', label: 'https://www.psichi.org/blogpost/987366/511159/Stacking-Up-Thoughts-The-Tetris-Effect-and-Our-Brains' },
+          { href: 'https://aleadedu.medium.com/o-efeito-tetris-203b532cfe4b', label: 'https://aleadedu.medium.com/o-efeito-tetris-203b532cfe4b' },
+          { href: 'https://youtube.com/shorts/z6nlLi1hQF0?si=zR4mDcZfNq20qkBe', label: 'https://youtube.com/shorts/z6nlLi1hQF0?si=zR4mDcZfNq20qkBe' },
+          { href: 'https://www.reddit.com/media?url=https%3A%2F%2Fpreview.redd.it%2Falexey-pajitnov-inventor-of-tetris-1990-v0-icw43uknerk71.jpg%3Fwidth%3D640%26crop%3Dsmart%26auto%3Dwebp%26s%3D0f6ac303ba4b4fcf4d49448885e2790b9846aacc', label: 'https://www.reddit.com/media (Alexey Pajitnov photo)' },
+          { href: 'https://youtube.com/shorts/K9uM4WSAxxA?si=XtRs6n1sUH3t_146', label: 'https://youtube.com/shorts/K9uM4WSAxxA?si=XtRs6n1sUH3t_146' },
+        ],
+      },
+      {
+        game: 'Super Mario Bros.',
+        items: [
+          { href: 'https://www.terra.com.br/gameon/plataformas-e-consoles/40-anos-de-super-mario-bros-o-jogo-que-salvou-a-industria-dos-videogames,3e0f147ae7443d20b68ddead62698d16jonxltqi.html', label: 'https://www.terra.com.br/gameon/… (40 anos de Super Mario Bros.)' },
+          { href: 'https://pt.wikipedia.org/wiki/Crise_dos_jogos_eletr%C3%B4nicos_de_1983', label: 'https://pt.wikipedia.org/wiki/Crise_dos_jogos_eletrônicos_de_1983' },
+          { href: 'https://pt.wikipedia.org/wiki/Jogo_eletr%C3%B4nico_de_rolagem_lateral', label: 'https://pt.wikipedia.org/wiki/Jogo_eletrônico_de_rolagem_lateral' },
+          { href: 'https://br.ign.com/super-mario-bros/145986/feature/shigeru-miyamoto-conta-segredos-sobre-a-criacao-da-fase-1-1-de-super-mario-bros', label: 'https://br.ign.com/super-mario-bros/145986/feature/shigeru-miyamoto-conta-segredos…' },
+          { href: 'https://youtu.be/EhLY-KgAhWY?si=3DhBJo6u-AQtocCO', label: 'https://youtu.be/EhLY-KgAhWY?si=3DhBJo6u-AQtocCO' },
+          { href: 'https://static.wikia.nocookie.net/nintendo/images/5/58/Super_Mario_Bros.png/revision/latest?cb=20170730194148&path-prefix=pt-br', label: 'https://static.wikia.nocookie.net/nintendo/images/5/58/Super_Mario_Bros.png' },
+          { href: 'https://youtu.be/oWyMk-2aH9E?si=BKrbSpvDL4Wcz-5O', label: 'https://youtu.be/oWyMk-2aH9E?si=BKrbSpvDL4Wcz-5O' },
+          { href: 'https://youtu.be/-avspZlbOWU?si=4CM2bqEFwwm0cBs9', label: 'https://youtu.be/-avspZlbOWU?si=4CM2bqEFwwm0cBs9' },
+          { href: 'https://hips.hearstapps.com/hmg-prod/images/80298bde-6d37-4145-8898-5f5aceed239d.jpeg?crop=0.889xw:1xh;0.056xw,0xh', label: 'https://hips.hearstapps.com/hmg-prod/images/80298bde…' },
+        ],
+      },
+      {
+        game: 'Super Mario 64',
+        items: [
+          { href: 'https://pt.wikipedia.org/wiki/Super_Mario_64', label: 'https://pt.wikipedia.org/wiki/Super_Mario_64' },
+          { href: 'https://www.mariowiki.com/Super_Mario_64', label: 'https://www.mariowiki.com/Super_Mario_64' },
+          { href: 'https://www.youtube.com/watch?v=kO7d9opl2u8', label: 'https://www.youtube.com/watch?v=kO7d9opl2u8' },
+          { href: 'https://youtu.be/KVnhgyZN-wE?si=T2tbT4dzR6EqsMLc', label: 'https://youtu.be/KVnhgyZN-wE?si=T2tbT4dzR6EqsMLc' },
+          { href: 'https://youtu.be/KVnhgyZN-wE?si=i8Ql-p7CH0ZpB5IK', label: 'https://youtu.be/KVnhgyZN-wE?si=i8Ql-p7CH0ZpB5IK' },
+          { href: 'https://youtube.com/shorts/h1mdEOvZb80?si=3LUe79RLYIONwHfD', label: 'https://youtube.com/shorts/h1mdEOvZb80?si=3LUe79RLYIONwHfD' },
+          { href: 'https://www.bojoga.com.br/files/2010/01/super-mario-64-screenshot-lakitu-cameraman-big.jpg', label: 'https://www.bojoga.com.br/files/2010/01/super-mario-64-screenshot-lakitu-cameraman-big.jpg' },
+          { href: 'https://youtube.com/shorts/PriusTHmotA?si=N9tQbs-H5sprZhCJ', label: 'https://youtube.com/shorts/PriusTHmotA?si=N9tQbs-H5sprZhCJ' },
+        ],
+      },
     ],
   },
 
