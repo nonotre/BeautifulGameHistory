@@ -207,7 +207,7 @@ export function GameScreen({ slug }: GameScreenProps) {
           />
         </section>
 
-        {/* Controller zone — fixed height, ~35vh */}
+        {/* DISABLED — Controller zone placeholder (restore when ready)
         <section
           aria-label="Interactive controller"
           style={{
@@ -225,6 +225,7 @@ export function GameScreen({ slug }: GameScreenProps) {
             {game.title} controller
           </div>
         </section>
+        */}
       </div>
     </main>
   )
