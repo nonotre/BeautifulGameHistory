@@ -193,7 +193,7 @@ export const pt = {
     team: {
       deizielle: 'pesquisa, escrita, conteúdo, imagem e vídeo',
       joao:      'direção de arte, ux/ui, design, front end, edição de vídeo',
-      pedro:     'roteiro, gravação e apresentação',
+      pedro:     'roteiro, gravação, apresentação, pesquisa e imagem',
     },
     aboutHeading: 'Sobre o projeto',
     aboutText: [

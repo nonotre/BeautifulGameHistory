@@ -195,7 +195,7 @@ export const en = {
     team: {
       deizielle: 'research, writing, content, image & video',
       joao:      'art direction, ux/ui, design, front end, video editing',
-      pedro:     'script, recording & presentation',
+      pedro:     'script, recording, presentation, research & image',
     },
     aboutHeading: 'About the project',
     aboutText: [
