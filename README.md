@@ -4,6 +4,8 @@ An interactive website that tells the history of video games through five milest
 
 Built with the Computer Museum of ICMC-USP (https://mc.icmc.usp.br/) to bring computing history to the general public, outside the university.
 
+**Live site: [historyofvideogames.nonotre.com](https://historyofvideogames.nonotre.com)**
+
 ## How it works
 
 - **Keyboard first.** Arrow keys or WASD scroll and move; Space or Enter act as the main button. The mouse works too.
