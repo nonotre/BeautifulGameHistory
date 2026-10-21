@@ -1,36 +1,36 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Beautiful Game History
 
-## Getting Started
+An interactive website that tells the history of video games through five milestones: Pong, Pac-Man, Tetris, Super Mario Bros. (1985) and Super Mario 64. Each one marks a jump in hardware or software, and the site explains how those problems were solved.
 
-First, run the development server:
+Built with the Computer Museum of ICMC-USP (https://mc.icmc.usp.br/) to bring computing history to the general public, outside the university.
+
+## How it works
+
+- **Keyboard first.** Arrow keys or WASD scroll and move; Space or Enter act as the main button. The mouse works too.
+- **Text that types itself.** Each game's story appears character by character as you scroll, like an old console screen.
+- **One theme per game.** Colors come in two layers of tokens: a raw palette for each game, and semantic tokens that the components read. Switching games swaps the palette without touching the components. Each game also has its own cursor.
+- **Back remembers where you came from.** The header's Back button returns to the exact screen you left, not just the previous page in the sequence.
+- **Portuguese and English**, switchable at any time.
+
+## Stack
+
+Next.js (App Router), React, TypeScript, Tailwind CSS, Radix UI and Zustand for navigation and language state.
+
+## Team
+
+A three-person project at ICMC-USP.
+
+- **Deizielle Klemp**: research, writing, content, image and video.
+- **João Pedro Oliveira**: art direction, UX/UI design, front end and video editing.
+- **Pedro Sarni**: script, recording, presentation, research and image.
+
+## Running locally
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Then open http://localhost:3000.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Game names, logos and sounds belong to their owners and are used here for educational purposes.
